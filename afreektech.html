@@ -5,41 +5,45 @@
   </head>
   <body class="page page--afreektech">
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-    <!--@include header variant="solid" active="afreektech" cta="#diagnostico"-->
+    <!--@include header variant="overlay" active="afreektech" cta="#diagnostico"-->
 
     <main id="conteudo">
-      <section class="glow-hero glow-hero--afreektech" aria-labelledby="afk-title">
-        <div class="glow-hero__inner">
-          <p class="tag tag--lime-outline">Afreektech / Infraestrutura de talento</p>
-          <div class="afk-hero">
-            <div class="afk-hero__copy">
-              <h1 id="afk-title">O apagão de mão de obra não é uma previsão. É um risco de balanço.</h1>
-              <p class="lead-text">
-                Formamos desenvolvedores, cientistas de dados e líderes em STEM sob a metodologia de altíssima exigência
-                técnica de Afreektech, convertendo capacidade subprecificada em entrega executiva escalável.
-              </p>
-              <div class="cta-row">
-                <a class="btn btn--primary" href="#diagnostico">Conhecer agora</a>
-                <a class="link-underline link-underline--bold" href="#tese">Conhecer a formação</a>
-              </div>
-            </div>
-            <div class="afk-visual">
-              <img src="/figma/afreektech/group-photo.webp" alt="" />
-              <div class="afk-visual__shade" aria-hidden="true"></div>
-              <div class="afk-visual__content">
-                <span class="chip-lime">Metodologia de formação</span>
-                <h2>Talentos negros e periféricos conectados a cadeias produtivas reais.</h2>
-                <p>Formação de elite, mentoria contínua e governança robusta para empresas que precisam de entrega executiva escalável.</p>
-              </div>
+      <!-- HERO (foto + overlay 70%) -->
+      <section class="photo-hero" aria-labelledby="afk-title">
+        <img class="photo-hero__media" src="/figma/afreektech/hero.webp" alt="" fetchpriority="high" />
+        <div class="photo-hero__overlay" aria-hidden="true"></div>
+        <div class="photo-hero__inner">
+          <div class="photo-hero__copy">
+            <h1 id="afk-title">O apagão de mão de obra não é uma previsão. É um risco de balanço.</h1>
+            <p class="lead-text">
+              Formamos desenvolvedores, cientistas de dados e líderes em STEM sob a metodologia de altíssima exigência
+              técnica de Afreektech, convertendo capacidade subprecificada em entrega executiva escalável.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn--primary" href="#diagnostico" data-intent="Contratar um projeto">Conhecer agora</a>
+              <a class="link-underline link-underline--bold" href="#tese">Conhecer a formação</a>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- A TESE EM UMA FRASE -->
+      <section class="one-line" aria-labelledby="one-line-title">
+        <div class="one-line__inner">
+          <p class="eyebrow">A tese em uma frase</p>
+          <h2 id="one-line-title">Inclusão econômica não é custo social. É correção de alocação.</h2>
+          <div class="one-line__cols">
+            <p>O Brasil não precisa inventar uma população produtiva. Ela já existe. O que precisa ser redesenhado é a estrutura que decide quem acessa formação, crédito, contratos e os lugares onde o valor fica.</p>
+            <p>O estudo organiza essa conversa em uma linguagem capaz de chegar à empresa, ao governo e a quem financia, sem esconder método, intervalo ou limite.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESE GEOPOLÍTICA -->
       <section class="tese" id="tese" aria-labelledby="tese-title">
         <div class="tese__inner">
           <div class="tese__left">
-            <p class="eyebrow eyebrow--ui">Tese geopolítica</p>
+            <p class="eyebrow">Tese geopolítica</p>
             <h2 id="tese-title">Formação STEM de elite para cadeias produtivas reais.</h2>
             <p>
               Acreditamos que o erro de alocação de talentos no Brasil retarda o avanço do desenvolvimento tecnológico de
@@ -58,10 +62,38 @@
         </div>
       </section>
 
+      <!-- O DESLOCAMENTO -->
+      <section class="shift" aria-labelledby="shift-title">
+        <div class="shift__inner">
+          <header class="section-head">
+            <p class="eyebrow">O deslocamento</p>
+            <h2 id="shift-title">De beneficiário para produtor. De assistência para infraestrutura.</h2>
+          </header>
+          <ol class="shift__grid">
+            <li class="info-card">
+              <p class="info-card__big">01</p>
+              <h3>O fluxo já existe</h3>
+              <p>Consumo e talento negros já movimentam a economia. O desafio é fazer parte desse valor virar propriedade, negócio e capacidade instalada.</p>
+            </li>
+            <li class="info-card">
+              <p class="info-card__big">02</p>
+              <h3>A janela é agora</h3>
+              <p>A economia digital pode ampliar o abismo se a formação, a tecnologia e os dados forem construídos para poucos.</p>
+            </li>
+            <li class="info-card">
+              <p class="info-card__big">03</p>
+              <h3>A decisão é desenhável</h3>
+              <p>Compras, formação, crédito, inovação e território podem ser organizados em projetos com metas, governança e acompanhamento.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- CO-INVESTIMENTO -->
       <section class="coinvest" aria-labelledby="coinvest-title">
         <div class="coinvest__inner">
           <header class="section-head">
-            <p class="eyebrow eyebrow--ui">Garantia de escalabilidade</p>
+            <p class="eyebrow">Garantia de escalabilidade</p>
             <h2 id="coinvest-title" class="h2-black">Mecanismos de co-investimento enterprise</h2>
           </header>
           <div class="coinvest__grid">
@@ -84,8 +116,9 @@
         </div>
       </section>
 
+      <!-- SELOS IMA -->
       <section class="badges" aria-labelledby="badges-title">
-        <p class="badges__title eyebrow eyebrow--ui" id="badges-title">Certificação IMA: Setores em atividade</p>
+        <p class="badges__title eyebrow" id="badges-title">Certificação IMA: Setores em atividade</p>
         <ul class="badges__list">
           <li>Tecnologia</li>
           <li>Serviços</li>
@@ -94,7 +127,119 @@
         </ul>
       </section>
 
-      <!--@include lead-capture-->
+      <!-- O QUE SABEMOS + MATERIAL PARA DECISÃO -->
+      <section class="lab-two" aria-label="Evidências e material para decisão">
+        <div class="lab-two__inner">
+          <div class="lab-two__left">
+            <p class="eyebrow">O que sabemos, e como sabemos</p>
+            <h2 class="lab-two__title">Rigor não precisa aparecer como ruído.</h2>
+
+            <article class="viz-card evidence">
+              <span class="status">Fato</span>
+              <p class="evidence__n" data-count-to="55.5" data-decimals="1" data-suffix="%">55,5%</p>
+              <p class="viz-card__text">da população brasileira é preta ou parda, segundo o Censo 2022.</p>
+            </article>
+            <article class="viz-card evidence">
+              <span class="status">Estimativa</span>
+              <p class="evidence__n" data-count-to="800" data-prefix="R$ " data-suffix=" bi">R$ 800 bi</p>
+              <p class="viz-card__text">é a estimativa central de PIB potencial não realizado por ano.</p>
+            </article>
+            <article class="viz-card evidence">
+              <span class="status">Hipótese</span>
+              <p class="evidence__n" data-count-to="1.7" data-decimals="1" data-suffix="x">1,7x</p>
+              <p class="viz-card__text">é a hipótese de retenção territorial testada pelo laboratório Afreektech.</p>
+            </article>
+            <p class="evidence__note">Cada número é apresentado com seu status de evidência. Fato, estimativa e hipótese não ocupam o mesmo lugar.</p>
+          </div>
+
+          <aside class="lab-two__right" aria-labelledby="lead-magnet-title">
+            <div class="magnet">
+              <div class="magnet__head">
+                <p class="eyebrow">Material para decisão</p>
+                <h2 id="lead-magnet-title">Uma tese para quem precisa decidir onde colocar capital.</h2>
+                <p>Solicite a leitura executiva do estudo “Sem o Negro, o Brasil não Cresce”. O material completo é destinado a empresas, governos, financiadores e parceiros de implementação.</p>
+                <ul class="magnet__list">
+                  <li>Resumo executivo</li>
+                  <li>Evidências classificadas</li>
+                  <li>Recomendações de política</li>
+                </ul>
+              </div>
+              <form class="form form--magnet" data-form="estudo" novalidate>
+                <div class="field">
+                  <label for="mg-segmento">Segmento de atuação</label>
+                  <select id="mg-segmento" name="segmento" required>
+                    <option value="" selected disabled>Ex: Infraestrutura e Energia</option>
+                    <option>Infraestrutura e Energia</option>
+                    <option>Instituição financeira</option>
+                    <option>Tecnologia</option>
+                    <option>Varejo e consumo</option>
+                    <option>Governo</option>
+                    <option>Outro</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="mg-funcionarios">Número de funcionários</label>
+                  <select id="mg-funcionarios" name="funcionarios" required>
+                    <option value="" selected disabled>Ex: Mais de 5.000 colaboradores</option>
+                    <option>Até 99</option>
+                    <option>100 a 999</option>
+                    <option>1.000 a 4.999</option>
+                    <option>Mais de 5.000 colaboradores</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="mg-orcamento">Orçamento corporativo anual</label>
+                  <select id="mg-orcamento" name="orcamento" required>
+                    <option value="" selected disabled>Ex: Acima de R$ 50M</option>
+                    <option>Até R$ 10M</option>
+                    <option>R$ 10M a R$ 50M</option>
+                    <option>Acima de R$ 50M</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="mg-email">E-mail corporativo</label>
+                  <input id="mg-email" name="email" type="email" placeholder="voce@organizacao.com.br" autocomplete="email" required />
+                </div>
+                <button class="btn btn--primary btn--block" type="submit">Solicitar a leitura executiva <span aria-hidden="true">→</span></button>
+                <p class="form__status" role="status" aria-live="polite"></p>
+              </form>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- REPOSITÓRIO DE ESTUDOS -->
+      <section class="repo" id="estudos" aria-labelledby="repo-title">
+        <div class="repo__inner">
+          <header>
+            <p class="repo__kicker"><span class="eyebrow eyebrow--14">Repositório</span><span class="repo__badge">ATUALIZADO 2026</span></p>
+            <h2 id="repo-title">Produção científica proprietária</h2>
+          </header>
+          <div class="repo__grid">
+            <article class="study-card">
+              <p class="study-card__eyebrow">ESTUDO 01 / MACRO</p>
+              <h3>A econometria do racismo</h3>
+              <p>Análise empírica do gap de PIB nacional aplicando a decomposição Blinder-Oaxaca na modelagem de fronteira produtiva de alocação de talentos.</p>
+              <a class="study-card__cta" href="#diagnostico" data-intent="Acessar a tese">PDF Técnico (24 páginas) <img src="/figma/lab/icon-download-lime.svg" alt="" width="12" height="12" /></a>
+            </article>
+            <article class="study-card">
+              <p class="study-card__eyebrow">ESTUDO 02 / TERRITÓRIO</p>
+              <h3>Capital que fica</h3>
+              <p>Mensuração do multiplicador LM3 no leste fluminense, analisando a taxa de retenção interna do capital investido em periferias metropolitanas brasileiras.</p>
+              <a class="study-card__cta" href="#diagnostico" data-intent="Acessar a tese">PDF Técnico (18 páginas) <img src="/figma/lab/icon-download-lime.svg" alt="" width="12" height="12" /></a>
+            </article>
+            <article class="study-card">
+              <p class="study-card__eyebrow">ESTUDO 03 / IA</p>
+              <h3>O novo Apartheid Digital</h3>
+              <p>Projeção do risco tecnológico brasileiro pela ausência de capacitação em IA generativa, soberania computacional e distribuição distributiva de valor.</p>
+              <a class="study-card__cta" href="#diagnostico" data-intent="Acessar a tese">PDF Técnico (32 páginas) <img src="/figma/lab/icon-download-lime.svg" alt="" width="12" height="12" /></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRÓXIMO PASSO -->
+      <!--@include lead-capture eyebrow="Próximo passo" title="O quase não é destino. É uma decisão." text="Conte qual decisão sua organização precisa tomar. A gente indica a frente, o formato e a unidade certa para começar."-->
     </main>
 
     <!--@include footer-->

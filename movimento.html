@@ -5,17 +5,22 @@
   </head>
   <body class="page page--movimento">
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-    <!--@include header variant="solid" active="movimento" cta="#diagnostico"-->
+    <!--@include header variant="overlay" active="movimento" cta="#diagnostico"-->
 
     <main id="conteudo">
-      <section class="glow-hero glow-hero--movimento" aria-labelledby="mov-title">
-        <div class="glow-hero__inner glow-hero__inner--page">
-          <p class="tag tag--orange-outline">Movimento Black Money / Presença territorial</p>
-          <h1 id="mov-title">Onde a tese encontra o território e vira infraestrutura.</h1>
-          <p class="lead-text">O ponto de contato mais visível do ecossistema. Presença concreta para transformar propósito institucional em capacidade econômica mensurável.</p>
+      <!-- HERO (foto + overlay 70%) -->
+      <section class="photo-hero photo-hero--page" aria-labelledby="mov-title">
+        <img class="photo-hero__media" src="/figma/movimento/hero.webp" alt="" fetchpriority="high" />
+        <div class="photo-hero__overlay" aria-hidden="true"></div>
+        <div class="photo-hero__inner">
+          <div class="photo-hero__copy photo-hero__copy--wide">
+            <h1 id="mov-title">Onde a tese encontra o território e vira infraestrutura.</h1>
+            <p class="lead-text">O ponto de contato mais visível do ecossistema. Presença concreta para transformar propósito institucional em capacidade econômica mensurável.</p>
+          </div>
         </div>
       </section>
 
+      <!-- FRENTES TERRITORIAIS -->
       <section class="territorial" aria-label="Frentes territoriais">
         <div class="territorial__inner">
           <article class="terr-card">
@@ -45,6 +50,19 @@
         </div>
       </section>
 
+      <!-- PARA QUEM FINANCIA: CONVÊNIOS TERRITORIAIS -->
+      <section class="fund-band" aria-labelledby="fund-band-title">
+        <div class="fund-band__inner">
+          <div>
+            <p class="eyebrow">Para quem financia</p>
+            <h2 id="fund-band-title">Convênios territoriais</h2>
+            <p>Execução local com capacidade de mobilização e prestação de contas. Empresas, governos, institutos e fundações apoiam projetos com escopo, governança e indicadores claros.</p>
+          </div>
+          <a class="btn btn--primary" href="#diagnostico">Conversar sobre uma frente <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <!-- COP30 -->
       <section class="cop30" aria-labelledby="cop-title">
         <div class="cop30__inner">
           <p class="cop30__tag">COP30 / Belém</p>
@@ -57,6 +75,7 @@
         </div>
       </section>
 
+      <!-- FORMULÁRIO TERRITORIAL -->
       <section class="territory-form" id="diagnostico" aria-labelledby="tf-title">
         <div class="territory-form__inner">
           <header>

@@ -25,6 +25,19 @@ if (!reduceMotion) {
   });
 }
 
+/* 1b. Portas de entrada: o CTA escolhido pré-seleciona "Eu quero" no formulário final */
+document.addEventListener(
+  'click',
+  (e) => {
+    const a = e.target.closest?.('[data-intent]');
+    const select = document.querySelector('#lead-intencao');
+    if (!a || !select) return;
+    const opt = [...select.options].find((o) => o.textContent.trim() === a.dataset.intent);
+    if (opt) select.value = opt.value;
+  },
+  true
+);
+
 /* 2. Header: ganha fundo com blur depois de 24px de scroll + menu mobile */
 const header = document.querySelector('[data-header]');
 if (header) {

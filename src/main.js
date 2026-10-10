@@ -112,6 +112,18 @@ if (counters.length && !reduceMotion) {
   counters.forEach((el) => io.observe(el));
 }
 
+/* 4b. Cases: carrossel automático em loop (pausa só no foco do teclado) */
+const casesTrack = document.querySelector('[data-cases-track]');
+if (casesTrack && !reduceMotion) {
+  [...casesTrack.children].forEach((li) => {
+    const clone = li.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.querySelector('a')?.setAttribute('tabindex', '-1');
+    casesTrack.appendChild(clone);
+  });
+  casesTrack.classList.add('is-running');
+}
+
 /* 5. Home — número ativo destaca o guia correspondente no gráfico radial */
 const numbers = document.querySelector('[data-numbers]');
 if (numbers) {

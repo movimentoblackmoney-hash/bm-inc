@@ -38,6 +38,7 @@ export default defineConfig({
         afreektech: resolve(root, 'afreektech.html'),
         movimento: resolve(root, 'movimento.html'),
         'afreek-lab': resolve(root, 'afreek-lab.html'),
+        'cases-petrobras': resolve(root, 'cases/petrobras.html'),
       },
     },
   },

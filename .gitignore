@@ -1,0 +1,10 @@
+node_modules
+dist
+.vercel
+.env
+.env.*
+!.env.example
+.assets/figma/_originals
+.references
+*.log
+desktop.ini

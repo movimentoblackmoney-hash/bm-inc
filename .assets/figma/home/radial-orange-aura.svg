@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="585" height="598" viewBox="0 0 585 598" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Orange aura" filter="url(#filter0_f_0_25)">
+<ellipse cx="292.5" cy="299" rx="260.5" ry="267" fill="url(#paint0_radial_0_25)"/>
+</g>
+<defs>
+<filter id="filter0_f_0_25" x="0" y="0" width="585" height="598" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="16" result="effect1_foregroundBlur_0_25"/>
+</filter>
+<radialGradient id="paint0_radial_0_25" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(172.67 299) scale(369.91 293.7)">
+<stop stop-color="#FFBAA7"/>
+<stop offset="0.53" stop-color="#FC987F"/>
+<stop offset="0.88" stop-color="#FF5736"/>
+<stop offset="1" stop-color="#FF5736"/>
+</radialGradient>
+</defs>
+</svg>

@@ -1,0 +1,132 @@
+/* MBM Tokens v1.0 — fonte: .assets/mbm-tokens.md
+   Extensões do layout do Figma (não presentes no arquivo de tokens) ficam no bloco "Extras do site". */
+:root {
+  /* Neutral */
+  --neutral-border: #d5d5be;
+  --neutral-border-interactive: #c2c2a8;
+  --neutral-border-interactive-hover: #a8a88e;
+  --neutral-border-disabled: #e4e4d2;
+  --neutral-icon-high-emphasis: #02131f;
+  --neutral-icon-low-emphasis: #3a5263;
+  --neutral-icon-disabled: #9aada0;
+  --neutral-icon-inverse: #d5d5be;
+  --neutral-surface: #ffffff;
+  --neutral-surface-page: #d5d5be;
+  --neutral-surface-high-emphasis: #c2c2a8;
+  --neutral-surface-low-emphasis: #e4e4d2;
+  --neutral-surface-hover: #cacab2;
+  --neutral-surface-disabled: #ebebd8;
+  --neutral-surface-inverse: #02131f;
+  --neutral-surface-inverse-raised: #0d2535;
+  --neutral-surface-inverse-high-emphasis: #163347;
+  --neutral-text-high-emphasis: #02131f;
+  --neutral-text-low-emphasis: #3a5263;
+  --neutral-text-disabled: #9aada0;
+  --neutral-text-inverse: #ffffff;
+  --neutral-text-inverse-low-emphasis: #8baab8;
+
+  /* Primary — Terracota */
+  --primary-border: #e96731;
+  --primary-border-hover: #c4521a;
+  --primary-icon: #e96731;
+  --primary-surface-high-emphasis: #e96731;
+  --primary-surface-low-emphasis: #fad5c2;
+  --primary-surface-hover: #c4521a;
+  --primary-text: #e96731;
+  --primary-text-hover: #c4521a;
+  --primary-text-on-color: #ffffff;
+
+  /* Highlight — Verde Lima */
+  --highlight-border: #d5f57a;
+  --highlight-surface-high-emphasis: #d5f57a;
+  --highlight-surface-low-emphasis: #eefbb8;
+  --highlight-surface-hover: #c3ed5a;
+  --highlight-text: #d5f57a;
+  --highlight-text-on-color: #506812;
+
+  /* Feedback */
+  --success-text: #15803d;
+  --success-text-on-color: #4ade80;
+  --danger-text: #b91c1c;
+  --danger-text-on-color: #f87171;
+
+  /* Marcas (alias semânticos) */
+  --abismo: #02131f;
+  --linho: #d5d5be;
+
+  /* Espaçamento */
+  --size-spacing-01: 4px;
+  --size-spacing-02: 8px;
+  --size-spacing-03: 16px;
+  --size-spacing-04: 24px;
+  --size-spacing-05: 32px;
+  --size-spacing-06: 40px;
+  --size-spacing-07: 48px;
+  --size-spacing-08: 64px;
+  --size-spacing-09: 80px;
+  --size-spacing-10: 96px;
+  --size-spacing-11: 128px;
+  --size-spacing-12: 160px;
+
+  /* Raios */
+  --border-radius-none: 0;
+  --border-radius-xs: 4px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+  --border-radius-pill: 999px;
+  --border-radius-circle: 50%;
+
+  /* Sombras */
+  --shadow-xs: 0 1px 3px rgba(2, 19, 31, 0.12), 0 1px 2px rgba(2, 19, 31, 0.08);
+  --shadow-sm: 0 4px 6px rgba(2, 19, 31, 0.1), 0 2px 4px rgba(2, 19, 31, 0.08);
+  --shadow-md: 0 10px 15px rgba(2, 19, 31, 0.1), 0 4px 6px rgba(2, 19, 31, 0.08);
+  --shadow-lg: 0 20px 25px rgba(2, 19, 31, 0.12), 0 8px 10px rgba(2, 19, 31, 0.06);
+  --shadow-xl: 0 25px 50px rgba(2, 19, 31, 0.25);
+
+  /* Z-index */
+  --zindex-back: -1;
+  --zindex-0: 1;
+  --zindex-1: 1000;
+  --zindex-2: 1010;
+  --zindex-3: 1020;
+  --zindex-4: 1030;
+  --zindex-6: 1050;
+
+  /* Motion */
+  --motion-duration-extra-fast: 100ms;
+  --motion-duration-fast: 200ms;
+  --motion-duration-normal: 300ms;
+  --motion-duration-slow: 400ms;
+  --motion-timing-ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --motion-timing-ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --motion-timing-ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  /* Tipografia */
+  --font-sans: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* ── Extras do site (cores/medidas que o Figma usa e os tokens ainda não cobrem) ── */
+  --extra-black: #000102;
+  --extra-black-raised: #00060c;
+  --extra-black-border: #010910;
+  --extra-field-dark: #0d2535;
+  --extra-field-dark-border: #1e3d52;
+  --extra-card-dark-border: #28404f;
+  --extra-panel-border: #163347;
+  --extra-olive: #4c642b; /* rótulos/eyebrows sobre claro */
+  --extra-olive-dark: #3a4d0e; /* texto de badge lima */
+  --extra-lime-tint: #ecfccb; /* fundo de badge */
+  --extra-line: #dde5e9; /* bordas de card claro */
+  --extra-line-2: #e5e7eb;
+  --extra-field-border: #dbe5eb;
+  --extra-surface-soft: #f4f7f8;
+  --extra-muted: #6b7280;
+  --extra-heading: #111827;
+
+  /* Layout */
+  --page-x: clamp(20px, 10.8333vw, 156px);
+  --header-h: 72px;
+}

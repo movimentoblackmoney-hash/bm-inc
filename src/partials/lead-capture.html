@@ -1,0 +1,36 @@
+<section class="lead" id="diagnostico" aria-labelledby="lead-title">
+  <div class="lead__inner">
+    <div class="lead__intro">
+      <p class="eyebrow eyebrow--orange">Entrada executiva</p>
+      <h2 id="lead-title">Solicite um diagnóstico estratégico</h2>
+      <p>Uma conversa orientada a escopo, risco, dados disponíveis e decisão de capital.</p>
+    </div>
+    <form class="form form--dark" data-form="diagnostico" novalidate>
+      <div class="field">
+        <label for="lead-nome">Nome completo</label>
+        <input id="lead-nome" name="nome" type="text" placeholder="Ex: Dr. Carlos Silva" autocomplete="name" required />
+      </div>
+      <div class="field">
+        <label for="lead-email">E-mail corporativo</label>
+        <input id="lead-email" name="email" type="email" placeholder="Ex: carlos.silva@empresa.com.br" autocomplete="email" required />
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="lead-org">Organização</label>
+          <input id="lead-org" name="organizacao" type="text" placeholder="Ex: Black Enterprise S/A" autocomplete="organization" />
+        </div>
+        <div class="field">
+          <label for="lead-prioridade">Prioridade de negócio</label>
+          <select id="lead-prioridade" name="prioridade">
+            <option>Garantia ESG &amp; SROI</option>
+            <option>Procurement e cadeia de suprimentos</option>
+            <option>Capital humano e talento</option>
+            <option>Projeto B2B2G de grande porte</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn--submit" type="submit">Enviar solicitação →</button>
+      <p class="form__status" role="status" aria-live="polite" hidden></p>
+    </form>
+  </div>
+</section>

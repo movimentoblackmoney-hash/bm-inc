@@ -42,6 +42,28 @@ if (header) {
   nav?.addEventListener('click', (e) => e.target.closest('a') && setMenu(false));
   document.addEventListener('keydown', (e) => e.key === 'Escape' && setMenu(false));
 
+  // Brilho que segue o cursor no menu (igual ao do Afreektech): só desktop com mouse
+  const glowMq = window.matchMedia('(hover: hover) and (min-width: 1101px)');
+  const pill = header.querySelector('[data-nav-pill]');
+  const glowItems = [...header.querySelectorAll('.nav-link, [data-nav-cta]')];
+  const inner = header.querySelector('.site-header__inner');
+  const setGlow = () => header.classList.toggle('has-nav-glow', glowMq.matches);
+  setGlow();
+  glowMq.addEventListener('change', setGlow);
+  inner?.addEventListener('mousemove', (e) => {
+    if (!glowMq.matches) return;
+    pill?.classList.toggle('is-lit', pill.contains(e.target));
+    glowItems.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--px', `${(e.clientX - r.left).toFixed(1)}px`);
+      el.style.setProperty('--py', `${(e.clientY - r.top).toFixed(1)}px`);
+    });
+  });
+  inner?.addEventListener('mouseleave', () => {
+    pill?.classList.remove('is-lit');
+    glowItems.forEach((el) => el.style.setProperty('--px', '-200px'));
+  });
+
   const active = header.dataset.active;
   header.querySelector(`[data-nav-id="${active}"]`)?.setAttribute('aria-current', 'page');
 }
@@ -90,19 +112,7 @@ if (counters.length && !reduceMotion) {
   counters.forEach((el) => io.observe(el));
 }
 
-/* 5. Logos: loop infinito (duplica a lista; pausa no hover) */
-const marquee = document.querySelector('[data-marquee]');
-if (marquee && !reduceMotion) {
-  [...marquee.children].forEach((li) => {
-    const clone = li.cloneNode(true);
-    clone.setAttribute('aria-hidden', 'true');
-    clone.querySelector('img')?.setAttribute('alt', '');
-    marquee.appendChild(clone);
-  });
-  marquee.classList.add('is-looping');
-}
-
-/* 6. Home — número ativo destaca o guia correspondente no gráfico radial */
+/* 5. Home — número ativo destaca o guia correspondente no gráfico radial */
 const numbers = document.querySelector('[data-numbers]');
 if (numbers) {
   const stats = [...numbers.querySelectorAll('[data-stat]')];
@@ -121,9 +131,15 @@ if (numbers) {
   stats.forEach((s) => io.observe(s));
 }
 
-/* 7. Hero em vídeo: pausa fora da tela e para quem prefere menos movimento */
+/* 6. Hero em vídeo: pausa fora da tela e para quem prefere menos movimento */
 const heroVideo = document.querySelector('[data-hero-video]');
 if (heroVideo) {
+  heroVideo.loop = true;
+  // garante o loop mesmo que o navegador ignore o atributo (reinicia ao terminar)
+  heroVideo.addEventListener('ended', () => {
+    heroVideo.currentTime = 0;
+    heroVideo.play().catch(() => {});
+  });
   if (reduceMotion) {
     heroVideo.removeAttribute('autoplay');
     heroVideo.pause();
@@ -132,7 +148,7 @@ if (heroVideo) {
   }
 }
 
-/* 8. Formulários
+/* 7. Formulários
    - Se VITE_FORM_ENDPOINT estiver definido, envia JSON por POST.
    - Senão, abre o e-mail do usuário com a mensagem pronta (mailto), sem simular envio. */
 const FORM_ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT;

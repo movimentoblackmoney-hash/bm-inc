@@ -1,16 +1,17 @@
-<header class="site-header site-header--solid" data-header data-active="{{active}}">
+<header class="site-header site-header--{{variant}}" data-header data-active="{{active}}">
   <div class="site-header__inner">
-    <!--@include logo tone="orange"-->
+    <!--@include logo tone="cream"-->
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
       <span class="sr-only">Abrir menu</span><span class="nav-toggle__bars" aria-hidden="true"></span>
     </button>
     <nav class="site-nav" id="site-nav" aria-label="Principal" data-nav>
       <div class="nav__links" data-nav-pill>
+        <a class="nav-link" data-nav-id="cases" href="/#cases">Cases</a>
         <a class="nav-link" data-nav-id="solutions" href="/bm-solutions.html">BM Solutions</a>
         <a class="nav-link" data-nav-id="afreektech" href="/afreektech.html">Afreektech</a>
         <a class="nav-link" data-nav-id="movimento" href="/movimento.html">Movimento Black Money</a>
       </div>
-      <a class="btn btn--primary btn--sm" data-nav-cta href="#diagnostico">Conhecer agora</a>
+      <a class="btn btn--outline btn--sm" data-nav-cta href="{{cta}}">Vamos conversar?</a>
     </nav>
   </div>
 </header>

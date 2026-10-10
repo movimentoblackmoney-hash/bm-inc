@@ -38,7 +38,12 @@ if (header) {
     toggle?.setAttribute('aria-expanded', String(open));
     nav?.classList.toggle('is-open', open);
   };
-  toggle?.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+  const toggleLabel = toggle?.querySelector('.sr-only');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    setMenu(open);
+    if (toggleLabel) toggleLabel.textContent = open ? 'Fechar menu' : 'Abrir menu';
+  });
   nav?.addEventListener('click', (e) => e.target.closest('a') && setMenu(false));
   document.addEventListener('keydown', (e) => e.key === 'Escape' && setMenu(false));
 
@@ -171,14 +176,29 @@ document.querySelectorAll('form[data-form]').forEach((form) => {
   const status = form.querySelector('.form__status');
   const say = (msg, state = 'ok') => {
     if (!status) return;
-    status.hidden = false;
     status.dataset.state = state;
     status.textContent = msg;
   };
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!form.checkValidity()) {
-      form.reportValidity();
+    // validação inline: erro visível, associado ao campo (aria-describedby) e foco no primeiro inválido
+    form.querySelectorAll('.field__error').forEach((n) => n.remove());
+    form.querySelectorAll('[aria-invalid]').forEach((n) => n.removeAttribute('aria-invalid'));
+    const invalid = [...form.elements].filter((el) => el.willValidate && !el.checkValidity());
+    if (invalid.length) {
+      invalid.forEach((el, i) => {
+        const msg = el.validity.valueMissing ? 'Preencha este campo.' : el.type === 'email' ? 'Informe um e-mail válido, como nome@empresa.com.br.' : 'Confira este campo.';
+        const err = document.createElement('p');
+        err.className = 'field__error';
+        err.id = (el.id || 'campo') + '-erro';
+        err.textContent = msg;
+        el.setAttribute('aria-invalid', 'true');
+        el.setAttribute('aria-describedby', err.id);
+        el.insertAdjacentElement('afterend', err);
+        el.addEventListener('input', () => { el.removeAttribute('aria-invalid'); err.remove(); }, { once: true });
+        if (i === 0) el.focus();
+      });
+      say('Revise os campos destacados.', 'error');
       return;
     }
     const data = Object.fromEntries(new FormData(form).entries());

@@ -8,3 +8,4 @@ dist
 .references
 *.log
 desktop.ini
+.impeccable/

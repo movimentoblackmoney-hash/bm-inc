@@ -5,7 +5,7 @@
   </head>
   <body class="page page--lab">
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-    <!--@include header active="lab"-->
+    <!--@include header variant="solid" active="lab" cta="#diagnostico"-->
 
     <main id="conteudo">
       <section class="glow-hero glow-hero--lab" aria-labelledby="lab-title">
@@ -93,8 +93,8 @@
                   <label for="mg-email">E-mail corporativo</label>
                   <input id="mg-email" name="email" type="email" placeholder="Ex: nome@empresa.com.br" autocomplete="email" required />
                 </div>
-                <button class="btn btn--primary btn--block" type="submit">Liberar estudo completo →</button>
-                <p class="form__status" role="status" aria-live="polite" hidden></p>
+                <button class="btn btn--primary btn--block" type="submit">Liberar estudo completo <span aria-hidden="true">→</span></button>
+                <p class="form__status" role="status" aria-live="polite"></p>
               </form>
             </div>
           </aside>

@@ -939,3 +939,9 @@ button, input, select { font: inherit; color: inherit; }
 /* Iluminado menor: cabe numa palavra curta ("Cases") e deixa o resto escuro */
 .nav__links.is-lit { --nav-dim: rgba(255, 255, 255, 0.45); }
 .has-nav-glow .nav-link, .has-nav-glow .nav-link:hover { background-image: radial-gradient(34px circle at var(--px, -200px) var(--py, 50%), #ffffff 0%, #ffffff 35%, var(--nav-dim, #ffffff) 100%); }
+
+/* Menu: mesmo tom em repouso e com o cursor (sem salto ao passar o mouse); oculta ao descer a página */
+.has-nav-glow .nav__links, .has-nav-glow .nav__links.is-lit { --nav-dim: rgba(255, 255, 255, 0.45); }
+.site-header { transition: background-color var(--motion-duration-normal), backdrop-filter var(--motion-duration-normal), transform var(--motion-duration-normal) var(--motion-timing-ease-out); }
+.site-header.is-hidden { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) { .site-header { transition: none; } }

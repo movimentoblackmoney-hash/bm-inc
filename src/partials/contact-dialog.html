@@ -1,0 +1,36 @@
+    <!-- Formulário (abre ao escolher uma porta de entrada) -->
+    <dialog class="form-dialog" id="contact-dialog" aria-labelledby="dialog-title">
+      <form class="form form--dark" data-form="diagnostico" novalidate>
+        <div class="form-dialog__head">
+          <h2 id="dialog-title">Abrir conversa</h2>
+          <button class="form-dialog__close" type="button" data-close-dialog aria-label="Fechar formulário"><span aria-hidden="true">×</span></button>
+        </div>
+        <div class="field">
+          <label for="lead-intencao">Eu quero</label>
+          <select id="lead-intencao" name="intencao" required>
+            <option value="" selected disabled>Escolher uma porta de entrada</option>
+            <option>Contratar um projeto</option>
+            <option>Financiar uma frente</option>
+            <option>Acessar a tese</option>
+            <option>Falar sobre outro assunto</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="lead-nome">Nome completo</label>
+          <input id="lead-nome" name="nome" type="text" placeholder="Seu nome" autocomplete="name" required />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="lead-email">E-mail corporativo</label>
+            <input id="lead-email" name="email" type="email" placeholder="voce@organizacao.com.br" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="lead-org">Organização</label>
+            <input id="lead-org" name="organizacao" type="text" placeholder="Nome da organização" autocomplete="organization" required />
+          </div>
+        </div>
+        <button class="btn btn--submit" type="submit">Abrir conversa <span aria-hidden="true">→</span></button>
+        <p class="form__hint">Usaremos estas informações apenas para encaminhar a conversa à frente certa.</p>
+        <p class="form__status" role="status" aria-live="polite"></p>
+      </form>
+    </dialog>

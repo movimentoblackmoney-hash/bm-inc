@@ -230,82 +230,10 @@
         </div>
       </section>
 
-      <!-- 7. PRÓXIMO PASSO: portas de entrada abrem o formulário -->
-      <section class="next" id="diagnostico" aria-labelledby="next-title">
-        <div class="next__inner">
-          <div class="next__intro">
-            <h2 id="next-title">Todo quase termina em uma decisão.</h2>
-            <p>Escolha por onde começar. A gente responde indicando a frente, o formato e a unidade certa.</p>
-          </div>
-          <ul class="next__doors">
-            <li>
-              <button class="next-door next-door--primary" type="button" data-open-form data-intent="Contratar um projeto">
-                <span class="next-door__body">
-                  <strong>Quero contratar um projeto</strong>
-                  <span class="next-door__text">Para organizações com um desafio estratégico: inovação aberta, formação de talentos e soluções sob medida.</span>
-                </span>
-                <span class="next-door__arrow" aria-hidden="true">→</span>
-              </button>
-            </li>
-            <li>
-              <button class="next-door" type="button" data-open-form data-intent="Financiar uma frente">
-                <span class="next-door__body">
-                  <strong>Quero financiar uma frente</strong>
-                  <span class="next-door__text">Para empresas, governos e fundações que querem apoiar turmas, programas ou convênios com indicadores claros.</span>
-                </span>
-                <span class="next-door__arrow" aria-hidden="true">→</span>
-              </button>
-            </li>
-            <li>
-              <button class="next-door" type="button" data-open-form data-intent="Acessar a tese">
-                <span class="next-door__body">
-                  <strong>Quero entender a tese</strong>
-                  <span class="next-door__text">Para quem decide com dados: a leitura executiva do estudo “Sem o Negro, o Brasil não Cresce”.</span>
-                </span>
-                <span class="next-door__arrow" aria-hidden="true">→</span>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <!--@include next-step-->
     </main>
 
-    <!-- Formulário (abre ao escolher uma porta de entrada) -->
-    <dialog class="form-dialog" id="contact-dialog" aria-labelledby="dialog-title">
-      <form class="form form--dark" data-form="diagnostico" novalidate>
-        <div class="form-dialog__head">
-          <h2 id="dialog-title">Abrir conversa</h2>
-          <button class="form-dialog__close" type="button" data-close-dialog aria-label="Fechar formulário"><span aria-hidden="true">×</span></button>
-        </div>
-        <div class="field">
-          <label for="lead-intencao">Eu quero</label>
-          <select id="lead-intencao" name="intencao" required>
-            <option value="" selected disabled>Escolher uma porta de entrada</option>
-            <option>Contratar um projeto</option>
-            <option>Financiar uma frente</option>
-            <option>Acessar a tese</option>
-            <option>Falar sobre outro assunto</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="lead-nome">Nome completo</label>
-          <input id="lead-nome" name="nome" type="text" placeholder="Seu nome" autocomplete="name" required />
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="lead-email">E-mail corporativo</label>
-            <input id="lead-email" name="email" type="email" placeholder="voce@organizacao.com.br" autocomplete="email" required />
-          </div>
-          <div class="field">
-            <label for="lead-org">Organização</label>
-            <input id="lead-org" name="organizacao" type="text" placeholder="Nome da organização" autocomplete="organization" required />
-          </div>
-        </div>
-        <button class="btn btn--submit" type="submit">Abrir conversa <span aria-hidden="true">→</span></button>
-        <p class="form__hint">Usaremos estas informações apenas para encaminhar a conversa à frente certa.</p>
-        <p class="form__status" role="status" aria-live="polite"></p>
-      </form>
-    </dialog>
+    <!--@include contact-dialog-->
 
     <!--@include footer tone="site-footer--light"-->
   </body>

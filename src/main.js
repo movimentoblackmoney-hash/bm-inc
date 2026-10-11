@@ -326,3 +326,41 @@ document.querySelectorAll('form[data-form]').forEach((form) => {
   );
   document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
 })();
+
+
+/* 10. BM Solutions: a dobra das 4 etapas fica fixa e os cards correm na horizontal ao rolar */
+(() => {
+  const section = document.querySelector('[data-steps]');
+  if (!section) return;
+  const stage = section.querySelector('[data-steps-stage]');
+  const viewport = section.querySelector('.steps2__viewport');
+  const track = section.querySelector('[data-steps-track]');
+  const mq = window.matchMedia('(min-width: 901px) and (prefers-reduced-motion: no-preference)');
+  let shift = 0;
+
+  const update = () => {
+    if (!mq.matches || shift <= 0) return;
+    const top = section.getBoundingClientRect().top;
+    const progress = Math.min(1, Math.max(0, -top / shift));
+    track.style.transform = `translate3d(${(-progress * shift).toFixed(1)}px, 0, 0)`;
+  };
+  const measure = () => {
+    if (!mq.matches) {
+      section.classList.remove('is-pinned');
+      section.style.removeProperty('height');
+      track.style.removeProperty('transform');
+      return;
+    }
+    section.classList.add('is-pinned');
+    section.style.removeProperty('height');
+    shift = Math.max(0, track.scrollWidth - viewport.clientWidth);
+    section.style.height = `${stage.offsetHeight + shift}px`;
+    update();
+  };
+
+  measure();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', measure);
+  mq.addEventListener('change', measure);
+  if (document.fonts?.ready) document.fonts.ready.then(measure);
+})();

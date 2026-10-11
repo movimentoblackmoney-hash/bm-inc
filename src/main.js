@@ -38,6 +38,19 @@ document.addEventListener(
   true
 );
 
+/* 1c. Modal do formulário: portas de entrada e CTAs abrem o <dialog> */
+const contactDialog = document.querySelector('#contact-dialog');
+if (contactDialog) {
+  document.addEventListener('click', (e) => {
+    if (e.target.closest?.('[data-open-form]')) {
+      if (!contactDialog.open) contactDialog.showModal();
+      contactDialog.querySelector('#lead-nome')?.focus();
+    }
+    if (e.target.closest?.('[data-close-dialog]')) contactDialog.close();
+    if (e.target === contactDialog) contactDialog.close(); // clique no backdrop
+  });
+}
+
 /* 2. Header: ganha fundo com blur depois de 24px de scroll + menu mobile */
 const header = document.querySelector('[data-header]');
 if (header) {

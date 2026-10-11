@@ -143,9 +143,9 @@ button, input, select { font: inherit; color: inherit; }
 .numbers__stage { position: relative; width: 1128px; max-width: 100%; height: 828px; margin: 40px auto 0; }
 .numbers__stats { position: absolute; inset: 0 auto auto 0; width: 264px; }
 .stat { position: absolute; left: 0; width: 264px; display: flex; flex-direction: column; gap: 14px; }
-.stat[data-stat='0'] { top: 49px; }
-.stat[data-stat='1'] { top: 345px; }
-.stat[data-stat='2'] { top: 641px; }
+.stat[data-stat='0'] { top: 77px; }
+.stat[data-stat='1'] { top: 373px; }
+.stat[data-stat='2'] { top: 669px; }
 .stat__value { font-size: 56px; line-height: 64px; color: var(--abismo); font-variant-numeric: tabular-nums; }
 .stat__text { font-size: 15px; line-height: 23px; color: var(--neutral-text-low-emphasis); }
 .numbers__viz { position: absolute; inset: 0; pointer-events: none; }
@@ -771,3 +771,70 @@ button, input, select { font: inherit; color: inherit; }
   .stack-card { grid-template-columns: 1fr; gap: 28px; min-height: 0; padding: 28px; border-radius: 24px; top: calc(var(--header-h) + 8px + var(--i, 0) * 16px); }
 }
 @media (prefers-reduced-motion: reduce) { .stack-card { transform: none; transition: none; } }
+
+
+/* ═════════ Home revisada (Figma "Home revisada") ═════════ */
+.home-hero__content { gap: 24px; }
+.home-hero h1 { max-width: 720px; }
+.home-hero__content .lead-text { max-width: 640px; }
+
+/* Tese: título + parágrafos à esquerda, lista com divisórias à direita */
+.op-model { padding: 0; }
+.tese2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 96px; align-items: start; padding: 88px var(--page-x); }
+.tese2__copy { display: flex; flex-direction: column; gap: 24px; }
+.tese2__copy h2 { font-weight: 400; font-size: clamp(30px, 2.78vw, 40px); line-height: 1.2; color: var(--abismo); }
+.tese2__lead { font-size: clamp(20px, 1.8vw, 26px); line-height: 1.35; color: var(--abismo); }
+.tese2__note { font-size: 16px; line-height: 24px; color: var(--neutral-text-low-emphasis); }
+.tese2__list { display: flex; flex-direction: column; }
+.tese2__list li { display: grid; grid-template-columns: 40px 1fr; gap: 16px; padding: 24px 0; border-bottom: 1px solid var(--neutral-border-disabled); }
+.tese2__list li:first-child { padding-top: 8px; }
+.tese2__n { padding-top: 4px; font-weight: 700; font-size: 12px; line-height: 16px; color: var(--extra-olive-dark); }
+.tese2__list h3 { font-weight: 700; font-size: 22px; line-height: 30px; color: var(--abismo); }
+.tese2__list p { margin-top: 4px; font-size: 16px; line-height: 24px; color: var(--neutral-text-low-emphasis); }
+
+/* Evidência / financiar: fundos brancos contínuos */
+.numbers__inner { padding-bottom: 40px; }
+.fund--white { background: #fff; }
+.fund--white .fund__inner { padding-top: 40px; }
+.fund--white .info-card { border-color: var(--extra-line); }
+
+/* Ecossistema / cases / próximo passo: Abismo sólido */
+.routing, .cases, .next { background: var(--abismo); }
+.cases__head h2 { font-weight: 400; font-size: clamp(28px, 2.64vw, 38px); line-height: 1.2; max-width: 520px; }
+
+/* Próximo passo: intro + portas (abrem o formulário em modal) */
+.next__inner { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); gap: 96px; align-items: center; padding: 120px var(--page-x); }
+.next__intro { display: flex; flex-direction: column; gap: 20px; }
+.next__intro h2 { font-weight: 400; font-size: clamp(30px, 2.78vw, 40px); line-height: 1.4; letter-spacing: -0.02em; color: var(--linho); }
+.next__intro p:last-child { font-size: 18px; line-height: 25px; color: var(--neutral-text-inverse-low-emphasis); }
+.next__doors { display: flex; flex-direction: column; gap: 12px; }
+.next-door { display: flex; flex-direction: column; gap: 8px; width: 100%; padding: 22px 24px; text-align: left; background: transparent; border: 1px solid var(--extra-panel-border); border-radius: var(--border-radius-lg); color: #fff; cursor: pointer; transition: border-color var(--motion-duration-fast), background-color var(--motion-duration-fast), transform var(--motion-duration-fast) var(--motion-timing-ease-out); }
+.next-door__who { font-weight: 700; font-size: 12px; line-height: 16px; letter-spacing: 0.72px; text-transform: uppercase; color: var(--highlight-text); }
+.next-door strong { font-weight: 700; font-size: 24px; line-height: 32px; }
+.next-door__text { font-size: 16px; line-height: 22px; color: var(--linho); }
+@media (hover: hover) { .next-door:hover { border-color: var(--highlight-border); background: rgba(213, 213, 190, 0.06); transform: translateY(-2px); } }
+
+/* Modal do formulário */
+.form-dialog { width: min(660px, calc(100% - 40px)); max-width: none; padding: 0; border: 0; background: transparent; color: var(--linho); overflow: visible; }
+.form-dialog::backdrop { background: rgba(2, 19, 31, 0.78); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.form-dialog .form--dark { display: flex; flex-direction: column; gap: 16px; padding: 32px; box-shadow: var(--shadow-xl); }
+.form-dialog__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.form-dialog__head h2 { font-weight: 400; font-size: 24px; line-height: 32px; color: var(--linho); }
+.form-dialog__close { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--extra-field-dark-border); border-radius: var(--border-radius-circle); background: transparent; color: var(--linho); font-size: 24px; line-height: 1; cursor: pointer; }
+.form-dialog__close:hover { border-color: var(--linho); }
+.form-dialog :focus-visible { outline-color: var(--highlight-border); box-shadow: none; }
+.form-dialog[open] { animation: dialog-in var(--motion-duration-normal) var(--motion-timing-ease-out); }
+@keyframes dialog-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* Rodapé claro */
+.site-footer--light { background: #fff; }
+.site-footer--light .site-footer__brand p, .site-footer--light .site-footer__legal { color: var(--neutral-text-low-emphasis); }
+.site-footer--light .site-footer__title { color: var(--extra-olive-dark); }
+.site-footer--light .site-footer__col a { color: var(--abismo); }
+.site-footer--light .site-footer__col a:hover { color: var(--extra-olive-dark); text-decoration: underline; }
+.site-footer--light :focus-visible { outline-color: var(--abismo); box-shadow: 0 0 0 5px var(--highlight-border); }
+
+@media (max-width: 900px) {
+  .tese2, .next__inner { grid-template-columns: 1fr; gap: 40px; padding-block: 56px; }
+}
+@media (prefers-reduced-motion: reduce) { .form-dialog[open] { animation: none; } }

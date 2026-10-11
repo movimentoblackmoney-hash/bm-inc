@@ -1087,3 +1087,29 @@ button, input, select { font: inherit; color: inherit; }
   .stack-row__main { gap: 24px; }
 }
 @media (prefers-reduced-motion: reduce) { .steps2__track { transform: none !important; } }
+
+
+/* Menu sem tarja: transparente ao rolar; troca de tom conforme o fundo por baixo */
+.site-header.is-scrolled { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.site-header--solid.is-scrolled { background: transparent; }
+.site-header.is-on-light .logo img { filter: brightness(0); }
+.site-header.is-on-light .nav-toggle { color: var(--abismo); }
+@media (min-width: 1101px) {
+  .site-header.is-on-light .nav-link, .site-header.is-on-light .nav-link[aria-current='page'] { color: var(--abismo); }
+  .has-nav-glow.is-on-light .nav__links, .has-nav-glow.is-on-light .nav__links.is-lit { --nav-dim: rgba(2, 19, 31, 0.45); }
+  .has-nav-glow.is-on-light .nav-link, .has-nav-glow.is-on-light .nav-link:hover { background-image: radial-gradient(34px circle at var(--px, -200px) var(--py, 50%), #02131f 0%, #02131f 35%, var(--nav-dim, #02131f) 100%); }
+  .has-nav-glow.is-on-light .nav-link[aria-current='page'] { --nav-dim: #02131f; }
+}
+
+/* Cases: logos nas proporções do Figma, 1º card mais largo e hover sem corte */
+.case--wide { flex-basis: 360px; }
+.case__logo img { object-fit: fill; }
+.cases__viewport { padding-block: 14px; margin-block: -14px; }
+
+/* BM Solutions: menu transparente sobre o hero; títulos dos cards na horizontal */
+.sol2-hero__inner { padding-top: calc(var(--header-h) + 96px); }
+.sol2-card__vertical { writing-mode: horizontal-tb; transform: none; font-size: 24px; line-height: 1.15; }
+.site-header.is-on-light .nav-toggle { border-color: rgba(2, 19, 31, 0.35); }
+.site-header.is-on-light .nav-toggle:not([aria-expanded='true']) .nav-toggle__bars,
+.site-header.is-on-light .nav-toggle:not([aria-expanded='true']) .nav-toggle__bars::before,
+.site-header.is-on-light .nav-toggle:not([aria-expanded='true']) .nav-toggle__bars::after { background: var(--abismo); }

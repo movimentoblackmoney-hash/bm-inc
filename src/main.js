@@ -72,6 +72,34 @@ if (header) {
   header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
   onScroll();
 
+  // Sem tarja: o menu muda de tom conforme o fundo que passa por baixo dele (claro → texto escuro)
+  const lum = (m) => {
+    const c = m.slice(0, 3).map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; });
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  };
+  const backdropIsLight = () => {
+    const r = header.getBoundingClientRect();
+    if (r.bottom <= 0 || r.top >= window.innerHeight) return false;
+    const x = Math.round(window.innerWidth / 2);
+    const y = Math.min(window.innerHeight - 1, Math.max(1, Math.round(r.top + r.height / 2)));
+    const under = document.elementsFromPoint(x, y).find((el) => !header.contains(el) && !el.closest('dialog'));
+    for (let el = under; el && el !== document.documentElement; el = el.parentElement) {
+      if (/^(VIDEO|IMG|CANVAS|PICTURE)$/.test(el.tagName)) return false;
+      const m = getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
+      if (m && (m.length < 4 || Number(m[3]) > 0.6)) return lum(m.map(Number)) > 0.5;
+    }
+    return false;
+  };
+  let probing = false;
+  const probe = () => {
+    if (probing) return;
+    probing = true;
+    requestAnimationFrame(() => { probing = false; header.classList.toggle('is-on-light', backdropIsLight()); });
+  };
+  window.addEventListener('scroll', probe, { passive: true });
+  window.addEventListener('resize', probe);
+  probe();
+
   const toggle = header.querySelector('[data-nav-toggle]');
   const nav = header.querySelector('[data-nav]');
   const setMenu = (open) => {

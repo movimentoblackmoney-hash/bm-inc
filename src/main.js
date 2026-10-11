@@ -267,3 +267,48 @@ document.querySelectorAll('form[data-form]').forEach((form) => {
     say('Abrimos seu e-mail com a mensagem pronta. É só enviar.');
   });
 });
+
+
+/* 9. Revelação de texto ao rolar (uma vez). Hero: palavras do título sobem em sequência. */
+(() => {
+  if (reduceMotion || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('reveal-ready');
+
+  // Hero: título palavra a palavra
+  const heroTitle = document.querySelector('.home-hero h1');
+  if (heroTitle && !heroTitle.dataset.split) {
+    heroTitle.dataset.split = '1';
+    const words = heroTitle.textContent.trim().split(/\s+/);
+    heroTitle.setAttribute('aria-label', words.join(' '));
+    heroTitle.innerHTML = words.map((w, i) => `<span class="hero-word" aria-hidden="true"><span style="--i:${i}">${w}</span></span>`).join(' ');
+  }
+
+  const groups = [
+    '.home-hero .lead-text, .home-hero__ctas',
+    'main h2:not(.sr-only), .section-head > p, .numbers__lead, .tese2__lead, .tese2__note, .fund__head p, .routing__head p, .cases__head .btn, .next__intro p',
+  ];
+  const stagger = ['.tese2__list li', '.stat', '.fund__grid .info-card', '.routing__grid .rot-card', '.next__doors li'];
+  const mark = (el, delay = 0) => {
+    if (el.hasAttribute('data-reveal') || el.closest('.sr-only')) return;
+    el.setAttribute('data-reveal', '');
+    el.style.setProperty('--d', delay + 'ms');
+  };
+  document.querySelectorAll(groups[0]).forEach((el, i) => mark(el, 650 + i * 120));
+  document.querySelectorAll(groups[1]).forEach((el) => mark(el));
+  stagger.forEach((sel) => {
+    const items = [...document.querySelectorAll(sel)];
+    items.forEach((el, i) => mark(el, Math.min(i, 4) * 90));
+  });
+
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      e.target.classList.add('is-in');
+      // devolve o elemento ao CSS normal (hover etc.) depois da entrada
+      setTimeout(() => { e.target.removeAttribute('data-reveal'); e.target.style.removeProperty('--d'); e.target.classList.remove('is-in'); }, 1400);
+    }),
+    { threshold: 0.15, rootMargin: '0px 0px -6% 0px' }
+  );
+  document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+})();

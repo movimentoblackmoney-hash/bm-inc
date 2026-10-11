@@ -838,3 +838,69 @@ button, input, select { font: inherit; color: inherit; }
   .tese2, .next__inner { grid-template-columns: 1fr; gap: 40px; padding-block: 56px; }
 }
 @media (prefers-reduced-motion: reduce) { .form-dialog[open] { animation: none; } }
+
+
+/* ═════════ Polimento da Home revisada (navbar, hero, 2ª dobra, hover, modal, revelação) ═════════ */
+
+/* Navbar: links soltos, brancos, 16/medium (sem pílula nem CTA) */
+.nav__links { --nav-dim: #ffffff; gap: 12px; padding: 0; border: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.nav__links.is-lit { --nav-dim: rgba(255, 255, 255, 0.7); }
+.nav-link { height: 48px; padding: 0 24px; color: #fff; font-weight: 400; }
+.nav-link:hover { background: transparent; }
+.nav-link[aria-current='page'] { font-weight: 700; box-shadow: none; }
+.has-nav-glow .nav-link, .has-nav-glow .nav-link:hover { background-image: radial-gradient(90px circle at var(--px, -200px) var(--py, 50%), #ffffff, var(--nav-dim, #ffffff)); }
+
+/* Hero: coluna de 936 (título) e 688 (texto), 24 de respiro, 1 CTA */
+.home-hero { min-height: 721px; padding-bottom: 44px; }
+.home-hero__content { gap: 24px; max-width: none; width: 100%; padding: calc(var(--header-h) + 112px) var(--page-x) 112px; }
+.home-hero h1 { max-width: 936px; font-size: clamp(36px, 3.89vw, 56px); line-height: 1.143; }
+.home-hero__content .lead-text { max-width: 688px; color: #fff; }
+.home-hero h1 { color: #fff; }
+.op-model { margin-top: -44px; }
+
+/* 2ª dobra: duas colunas iguais; lista começa ~160px abaixo do título */
+.tese2 { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(48px, 10vw, 144px); row-gap: 24px; align-items: start; padding: 88px var(--page-x) 140px; }
+.tese2__copy { gap: 21px; }
+.tese2__copy h2 { font-size: clamp(30px, 2.78vw, 40px); line-height: 1; max-width: 492px; }
+.tese2__lead { font-size: clamp(20px, 2vw, 29px); line-height: 1.12; letter-spacing: -0.01em; max-width: 492px; }
+.tese2__note { font-size: 16px; line-height: 23px; max-width: 492px; }
+.tese2__list { margin-top: 141px; }
+.tese2__list li { grid-template-columns: 66px 1fr; gap: 0; padding: 20px 0; border-bottom: 1px solid var(--neutral-border-disabled); }
+.tese2__list li:first-child { padding-top: 20px; }
+.tese2__n { color: #c4521a; padding-top: 6px; }
+.tese2__list h3 { font-size: 21px; line-height: 30px; }
+.tese2__list p { margin-top: 4px; font-size: 14px; line-height: 20px; }
+@media (max-width: 900px) { .tese2__list { margin-top: 8px; } .tese2 { padding-bottom: 72px; } }
+
+/* Hover discreto: só levanta o card */
+.case a::before { display: none; }
+.case a:hover, .case a:focus-visible { border-color: #2c2c2c; transform: translateY(-6px); }
+.case a:hover .case__logo img, .case a:focus-visible .case__logo img { filter: none; }
+.case a:hover .case__cta, .case a:focus-visible .case__cta { color: #fff; }
+.next-door:hover, .next-door:focus-visible { border-color: var(--extra-card-dark-border); background: transparent; transform: translateY(-4px); }
+.rot-card:hover > img { transform: none; }
+@media (hover: hover) { .rot-card { transition: transform var(--motion-duration-normal) var(--motion-timing-ease-out); } .rot-card:hover { transform: translateY(-6px); } }
+
+/* Formulário minimalista (modal) */
+.form-dialog { width: min(560px, calc(100% - 40px)); }
+.form-dialog .form--dark { gap: 28px; padding: 40px; background: var(--abismo); border: 1px solid rgba(213, 213, 190, 0.14); border-radius: 20px; box-shadow: var(--shadow-xl); }
+.form-dialog__head h2 { font-size: 28px; line-height: 36px; letter-spacing: -0.01em; }
+.form-dialog__close { width: 40px; height: 40px; border: 0; font-size: 28px; color: var(--neutral-text-inverse-low-emphasis); }
+.form-dialog__close:hover { color: var(--linho); }
+.form-dialog .field { gap: 4px; }
+.form-dialog .form--dark label { font-size: 12px; line-height: 16px; letter-spacing: 0.72px; text-transform: uppercase; color: var(--neutral-text-inverse-low-emphasis); }
+.form-dialog .form--dark input, .form-dialog .form--dark select { min-height: 44px; padding: 8px 0; background-color: transparent; border: 0; border-bottom: 1px solid var(--extra-field-border-dark); border-radius: 0; color: var(--linho); }
+.form-dialog .form--dark select { background-position: right 2px center; }
+.form-dialog .form--dark input:focus-visible, .form-dialog .form--dark select:focus-visible { border-bottom-color: var(--highlight-border); outline: none; box-shadow: 0 1px 0 0 var(--highlight-border); }
+.form-dialog .form--dark [aria-invalid='true'] { background-color: transparent; border-bottom-color: var(--danger-text-on-color); color: var(--linho); }
+.form-dialog .field-row { gap: 24px; }
+.form-dialog .btn--submit { width: auto; align-self: flex-start; margin-top: 4px; padding: 14px 28px; border-radius: var(--border-radius-pill); }
+.form-dialog .form__hint { font-size: 13px; line-height: 18px; }
+
+/* Revelação de texto (progressiva: só liga com JS e sem reduced-motion) */
+.reveal-ready [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity 700ms var(--motion-timing-ease-out), transform 700ms var(--motion-timing-ease-out); transition-delay: var(--d, 0ms); }
+.reveal-ready [data-reveal].is-in { opacity: 1; transform: none; }
+.reveal-ready .hero-word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+.reveal-ready .hero-word > span { display: inline-block; transform: translateY(105%); animation: hero-word-in 800ms var(--motion-timing-ease-out) forwards; animation-delay: calc(120ms + var(--i, 0) * 55ms); }
+@keyframes hero-word-in { to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .reveal-ready [data-reveal], .reveal-ready .hero-word > span { opacity: 1; transform: none; transition: none; animation: none; } }

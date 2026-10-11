@@ -935,3 +935,7 @@ button, input, select { font: inherit; color: inherit; }
 /* Navbar: iluminado mais destacado. Texto base mais escuro quando o cursor está no menu; o foco de luz continua branco puro */
 .nav__links.is-lit { --nav-dim: rgba(255, 255, 255, 0.5); }
 .has-nav-glow .nav-link, .has-nav-glow .nav-link:hover { background-image: radial-gradient(80px circle at var(--px, -200px) var(--py, 50%), #ffffff 0%, #ffffff 25%, var(--nav-dim, #ffffff) 100%); }
+
+/* Iluminado menor: cabe numa palavra curta ("Cases") e deixa o resto escuro */
+.nav__links.is-lit { --nav-dim: rgba(255, 255, 255, 0.45); }
+.has-nav-glow .nav-link, .has-nav-glow .nav-link:hover { background-image: radial-gradient(34px circle at var(--px, -200px) var(--py, 50%), #ffffff 0%, #ffffff 35%, var(--nav-dim, #ffffff) 100%); }

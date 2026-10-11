@@ -905,3 +905,24 @@ button, input, select { font: inherit; color: inherit; }
 .reveal-ready .hero-word > span { display: inline-block; transform: translateY(105%); animation: hero-word-in 800ms var(--motion-timing-ease-out) forwards; animation-delay: calc(120ms + var(--i, 0) * 55ms); }
 @keyframes hero-word-in { to { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .reveal-ready [data-reveal], .reveal-ready .hero-word > span { opacity: 1; transform: none; transition: none; animation: none; } }
+
+
+/* ═════════ Próximo passo (hierarquia v2) ═════════ */
+.next__inner { align-items: center; }
+.next__intro { gap: 20px; }
+.next__intro h2 { font-weight: 700; font-size: clamp(32px, 3.33vw, 48px); line-height: 1.17; letter-spacing: -0.02em; color: #fff; text-wrap: balance; }
+.next__intro p { max-width: 420px; font-size: 18px; line-height: 26px; color: var(--neutral-text-inverse-low-emphasis); }
+.next__doors { gap: 12px; }
+.next-door { flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 28px; border-color: var(--extra-card-dark-border); }
+.next-door__body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.next-door strong { font-weight: 700; font-size: 20px; line-height: 28px; color: #fff; }
+.next-door__text { font-size: 16px; line-height: 24px; color: var(--linho); }
+.next-door__arrow { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--extra-card-dark-border); border-radius: var(--border-radius-circle); font-size: 18px; line-height: 1; color: var(--linho); transition: background-color var(--motion-duration-fast), border-color var(--motion-duration-fast), transform var(--motion-duration-fast) var(--motion-timing-ease-out); }
+.next-door--primary { border-color: var(--primary-border); }
+.next-door--primary .next-door__arrow { background: var(--primary-surface-high-emphasis); border-color: var(--primary-surface-high-emphasis); color: var(--abismo); }
+@media (hover: hover) {
+  .next-door:hover, .next-door:focus-visible { border-color: var(--neutral-text-inverse-low-emphasis); }
+  .next-door--primary:hover, .next-door--primary:focus-visible { border-color: var(--primary-border); }
+  .next-door:hover .next-door__arrow { transform: translateX(3px); }
+}
+@media (max-width: 520px) { .next-door { padding: 20px; gap: 16px; } .next-door__arrow { width: 40px; height: 40px; } }

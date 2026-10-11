@@ -1052,9 +1052,9 @@ button, input, select { font: inherit; color: inherit; }
 .step2-card:nth-child(3) { height: 396px; }
 .step2-card:nth-child(4) { height: 404px; }
 .step2-card--lead { width: 552px; height: 372px; }
-.step2-card h3 { font-weight: 400; font-size: 56px; line-height: 1; color: var(--abismo); }
+.step2-card h3 { font-weight: 400; font-size: 40px; line-height: 1.1; color: var(--abismo); }
 .step2-card p { margin-top: 24px; font-size: 24px; line-height: 1.25; color: var(--neutral-text-low-emphasis); }
-.step2-card--lead h3 { font-size: 56px; line-height: 1; }
+.step2-card--lead h3 { font-size: 40px; line-height: 1.1; }
 .step2-card--lead p { font-size: 24px; line-height: 1.25; }
 .step2-card img { width: 24px; height: 24px; }
 

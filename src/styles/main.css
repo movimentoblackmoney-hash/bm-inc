@@ -1190,3 +1190,11 @@ button, input, select { font: inherit; color: inherit; }
 @media (min-width: 1101px) {
   .numbers__stage { width: 1128px; max-width: none; margin-left: 0; margin-right: 0; zoom: var(--stage-zoom, 1); }
 }
+
+/* Evidência em tablet: os 3 números lado aPLUS lado em colunas; no celular voltam a empilhar */
+@media (min-width: 601px) and (max-width: 1100px) {
+  .numbers__stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; width: 100%; }
+  .stat { max-width: none; }
+  .stat__value { font-size: clamp(30px, 5.4vw, 48px); line-height: 1.15; white-space: nowrap; }
+  .download-card { max-width: 640px; }
+}

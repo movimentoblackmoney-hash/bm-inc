@@ -1209,3 +1209,7 @@ button, input, select { font: inherit; color: inherit; }
   .cases__strip { gap: 16px; }
   .cases__inner { padding-block: 48px; gap: 28px; }
 }
+
+/* Serviços (BM Solutions): tipografia em Medium (500) */
+.stack-services__head h2, .stack-row__n, .stack-row h3, .stack-row__text a, .stack-services__head .eyebrow { font-weight: 500; }
+.stack-row__label { font-weight: 500; }

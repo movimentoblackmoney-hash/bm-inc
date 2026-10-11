@@ -386,3 +386,19 @@ document.querySelectorAll('form[data-form]').forEach((form) => {
   mq.addEventListener('change', measure);
   if (document.fonts?.ready) document.fonts.ready.then(measure);
 })();
+
+/* 11. Evidência: encolhe a composição (números + radial + cartão) para caber entre 1101 e 1440px */
+(() => {
+  const stage = document.querySelector('.numbers__stage');
+  if (!stage) return;
+  const fit = () => {
+    if (window.innerWidth <= 1100) { stage.style.removeProperty('--stage-zoom'); return; }
+    const inner = stage.closest('.numbers__inner');
+    const left = parseFloat(getComputedStyle(inner).paddingLeft) || 0;
+    const needed = 1128 + 73; // composição + parte do cartão que passa da coluna
+    const avail = document.documentElement.clientWidth - left - 16;
+    stage.style.setProperty('--stage-zoom', Math.min(1, avail / needed).toFixed(3));
+  };
+  fit();
+  window.addEventListener('resize', fit);
+})();

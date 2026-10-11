@@ -1185,3 +1185,8 @@ button, input, select { font: inherit; color: inherit; }
 @media (max-width: 700px) {
   .field-row, .form--light-fields .field-row { flex-direction: column; }
 }
+
+/* Evidência: a composição é desenhada para 1128px + cartão; entre 1101 e 1440px ela encolhe inteira (zoom via JS) */
+@media (min-width: 1101px) {
+  .numbers__stage { width: 1128px; max-width: none; margin-left: 0; margin-right: 0; zoom: var(--stage-zoom, 1); }
+}

@@ -874,7 +874,8 @@ button, input, select { font: inherit; color: inherit; }
 
 /* Hover discreto: só levanta o card */
 .case a::before { display: none; }
-.case a:hover, .case a:focus-visible { border-color: #2c2c2c; transform: translateY(-6px); }
+.case a { background: var(--neutral-surface-inverse); border-color: var(--neutral-surface-inverse-raised); }
+.case a:hover, .case a:focus-visible { border-color: var(--neutral-surface-inverse-high-emphasis); transform: translateY(-6px); }
 .case a:hover .case__logo img, .case a:focus-visible .case__logo img { filter: none; }
 .case a:hover .case__cta, .case a:focus-visible .case__cta { color: #fff; }
 .next-door:hover, .next-door:focus-visible { border-color: var(--extra-card-dark-border); background: transparent; transform: translateY(-4px); }

@@ -771,3 +771,21 @@ button, input, select { font: inherit; color: inherit; }
   .stack-card { grid-template-columns: 1fr; gap: 28px; min-height: 0; padding: 28px; border-radius: 24px; top: calc(var(--header-h) + 8px + var(--i, 0) * 16px); }
 }
 @media (prefers-reduced-motion: reduce) { .stack-card { transform: none; transition: none; } }
+
+
+/* ═════════ Menu (navbar): links soltos, brancos, luz que segue o cursor, oculta ao descer ═════════ */
+.nav__links { --nav-dim: #ffffff; gap: 12px; padding: 0; border: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.nav-link { height: 48px; padding: 0 24px; color: #fff; font-weight: 400; }
+.nav-link:hover { background: transparent; }
+/* Página atual: medium e branco pleno, mesmo com o resto do menu apagado */
+.nav-link[aria-current='page'] { font-weight: 500; color: #fff; box-shadow: none; }
+
+/* Luz pequena (cabe em "Cases"); em repouso e com o cursor o texto usa o mesmo tom, sem salto */
+.has-nav-glow .nav__links, .has-nav-glow .nav__links.is-lit { --nav-dim: rgba(255, 255, 255, 0.45); }
+.has-nav-glow .nav-link, .has-nav-glow .nav-link:hover { background-image: radial-gradient(34px circle at var(--px, -200px) var(--py, 50%), #ffffff 0%, #ffffff 35%, var(--nav-dim, #ffffff) 100%); }
+.has-nav-glow .nav-link[aria-current='page'] { --nav-dim: #ffffff; }
+
+/* Oculta ao rolar para baixo, volta ao subir */
+.site-header { transition: background-color var(--motion-duration-normal), backdrop-filter var(--motion-duration-normal), transform var(--motion-duration-normal) var(--motion-timing-ease-out); }
+.site-header.is-hidden { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) { .site-header { transition: none; } }

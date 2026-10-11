@@ -41,8 +41,22 @@ document.addEventListener(
 /* 2. Header: ganha fundo com blur depois de 24px de scroll + menu mobile */
 const header = document.querySelector('[data-header]');
 if (header) {
-  const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+  // Rolar para baixo oculta o menu; rolar para cima (ou foco/menu aberto) traz de volta
+  let lastY = window.scrollY;
+  const onScroll = () => {
+    const y = window.scrollY;
+    header.classList.toggle('is-scrolled', y > 24);
+    const menuOpen = header.querySelector('[data-nav]')?.classList.contains('is-open');
+    const delta = y - lastY;
+    if (Math.abs(delta) > 6) {
+      const hide = delta > 0 && y > 160 && !menuOpen && !header.matches(':focus-within');
+      header.classList.toggle('is-hidden', hide);
+      lastY = y;
+    }
+    if (y <= 24) header.classList.remove('is-hidden');
+  };
   window.addEventListener('scroll', onScroll, { passive: true });
+  header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
   onScroll();
 
   const toggle = header.querySelector('[data-nav-toggle]');

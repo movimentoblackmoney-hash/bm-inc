@@ -1198,3 +1198,14 @@ button, input, select { font: inherit; color: inherit; }
   .stat__value { font-size: clamp(30px, 5.4vw, 48px); line-height: 1.15; white-space: nowrap; }
   .download-card { max-width: 640px; }
 }
+
+/* Cases no celular/tablet: cards menores, sem espaço vazio */
+@media (max-width: 900px) {
+  .case { flex-basis: 200px; height: 280px; }
+  .case--wide { flex-basis: 250px; }
+  .case a { padding: 0 16px 22px; border-radius: 22px; }
+  .case__logo { transform: translate(-50%, -62%) scale(0.8); }
+  .case__cta { font-size: 14px; }
+  .cases__strip { gap: 16px; }
+  .cases__inner { padding-block: 48px; gap: 28px; }
+}

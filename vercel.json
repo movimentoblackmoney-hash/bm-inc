@@ -3,5 +3,18 @@
   "framework": "vite",
   "installCommand": "npm install",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/cases/petrobras",
+      "destination": "/case-petrobras",
+      "permanent": true
+    },
+    {
+      "source": "/cases/petrobras.html",
+      "destination": "/case-petrobras",
+      "permanent": true
+    }
+  ]
 }

@@ -142,6 +142,28 @@ if (casesTrack && !reduceMotion) {
   casesTrack.classList.add('is-running');
 }
 
+/* 4c. Cards empilhados: o card anterior recua (escala/brilho) quando o próximo o cobre */
+const stack = document.querySelector('[data-stack]');
+if (stack && !reduceMotion) {
+  const cards = [...stack.children];
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    cards.forEach((card, i) => {
+      let depth = 0;
+      const top = card.getBoundingClientRect().top;
+      for (let j = i + 1; j < cards.length; j++) {
+        if (cards[j].getBoundingClientRect().top < top + 140) depth += 1;
+      }
+      card.style.setProperty('--depth', String(Math.min(depth, 3)));
+    });
+  };
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+}
+
 /* 5. Home — número ativo destaca o guia correspondente no gráfico radial */
 const numbers = document.querySelector('[data-numbers]');
 if (numbers) {

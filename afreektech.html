@@ -27,65 +27,56 @@
         </div>
       </section>
 
-      <!-- A TESE EM UMA FRASE -->
-      <section class="one-line" aria-labelledby="one-line-title">
-        <div class="one-line__inner">
-          <p class="eyebrow">A tese em uma frase</p>
-          <h2 id="one-line-title">Inclusão econômica não é custo social. É correção de alocação.</h2>
-          <div class="one-line__cols">
-            <p>O Brasil não precisa inventar uma população produtiva. Ela já existe. O que precisa ser redesenhado é a estrutura que decide quem acessa formação, crédito, contratos e os lugares onde o valor fica.</p>
-            <p>O estudo organiza essa conversa em uma linguagem capaz de chegar à empresa, ao governo e a quem financia, sem esconder método, intervalo ou limite.</p>
-          </div>
-        </div>
-      </section>
+      <!-- TESE: 3 cards empilhados (stacked scroll) -->
+      <section class="stack" id="tese" aria-labelledby="stack-title">
+        <div class="stack__inner">
+          <h2 class="sr-only" id="stack-title">A tese da Afreektech</h2>
+          <div class="stack__list" data-stack>
+            <article class="stack-card" style="--i: 0">
+              <div class="stack-card__main">
+                <p class="stack-card__eyebrow">A tese em uma frase</p>
+                <h3 class="stack-card__title">Inclusão econômica não é custo social. <span>É correção de alocação.</span></h3>
+                <ul class="stack-card__tags" aria-label="Eixos">
+                  <li>Formação</li><li>Crédito</li><li>Contratos</li><li>Tecnologia</li>
+                </ul>
+              </div>
+              <div class="stack-card__side">
+                <p>O Brasil não precisa inventar uma população produtiva. Ela já existe. O que precisa ser redesenhado é a estrutura que decide quem acessa formação, crédito, contratos e os lugares onde o valor fica.</p>
+                <p>O estudo organiza essa conversa em uma linguagem capaz de chegar à empresa, ao governo e a quem financia, sem esconder método, intervalo ou limite.</p>
+              </div>
+            </article>
 
-      <!-- TESE GEOPOLÍTICA -->
-      <section class="tese" id="tese" aria-labelledby="tese-title">
-        <div class="tese__inner">
-          <div class="tese__left">
-            <p class="eyebrow">Tese geopolítica</p>
-            <h2 id="tese-title">Formação STEM de elite para cadeias produtivas reais.</h2>
-            <p>
-              Acreditamos que o erro de alocação de talentos no Brasil retarda o avanço do desenvolvimento tecnológico de
-              ponta nacional. Afreektech reconfigura o pipeline de contratação conectando mentes brilhantes a empresas de
-              forma sustentável, reduzindo o turn-over e garantindo governança robusta.
-            </p>
-          </div>
-          <div class="tese__right">
-            <h3>Custo da inação</h3>
-            <ol>
-              <li><span>01</span><p>Estagnação de produtividade sistêmica devido à defasagem técnica das equipes de tecnologia corporativa.</p></li>
-              <li><span>02</span><p>Dependência excessiva de soluções de terceirização global de software com custo indexado ao dólar.</p></li>
-              <li><span>03</span><p>Perda de alfa alocativo por ausência de engenharia de impacto social profundo nas metas internas.</p></li>
-            </ol>
-          </div>
-        </div>
-      </section>
+            <article class="stack-card" style="--i: 1">
+              <div class="stack-card__main">
+                <p class="stack-card__eyebrow">Tese geopolítica</p>
+                <h3 class="stack-card__title">Formação STEM de elite <span>para cadeias produtivas reais.</span></h3>
+                <p class="stack-card__lead">Acreditamos que o erro de alocação de talentos no Brasil retarda o avanço do desenvolvimento tecnológico de ponta nacional. Afreektech reconfigura o pipeline de contratação conectando mentes brilhantes a empresas de forma sustentável, reduzindo o turn-over e garantindo governança robusta.</p>
+              </div>
+              <div class="stack-card__side">
+                <p class="stack-card__label">Custo da inação</p>
+                <ol class="stack-card__list">
+                  <li><span>01</span><p>Estagnação de produtividade sistêmica devido à defasagem técnica das equipes de tecnologia corporativa.</p></li>
+                  <li><span>02</span><p>Dependência excessiva de soluções de terceirização global de software com custo indexado ao dólar.</p></li>
+                  <li><span>03</span><p>Perda de alfa alocativo por ausência de engenharia de impacto social profundo nas metas internas.</p></li>
+                </ol>
+              </div>
+            </article>
 
-      <!-- O DESLOCAMENTO -->
-      <section class="shift" aria-labelledby="shift-title">
-        <div class="shift__inner">
-          <header class="section-head">
-            <p class="eyebrow">O deslocamento</p>
-            <h2 id="shift-title">De beneficiário para produtor. De assistência para infraestrutura.</h2>
-          </header>
-          <ol class="shift__grid">
-            <li class="info-card">
-              <p class="info-card__big">01</p>
-              <h3>O fluxo já existe</h3>
-              <p>Consumo e talento negros já movimentam a economia. O desafio é fazer parte desse valor virar propriedade, negócio e capacidade instalada.</p>
-            </li>
-            <li class="info-card">
-              <p class="info-card__big">02</p>
-              <h3>A janela é agora</h3>
-              <p>A economia digital pode ampliar o abismo se a formação, a tecnologia e os dados forem construídos para poucos.</p>
-            </li>
-            <li class="info-card">
-              <p class="info-card__big">03</p>
-              <h3>A decisão é desenhável</h3>
-              <p>Compras, formação, crédito, inovação e território podem ser organizados em projetos com metas, governança e acompanhamento.</p>
-            </li>
-          </ol>
+            <article class="stack-card" style="--i: 2">
+              <div class="stack-card__main">
+                <p class="stack-card__eyebrow">O deslocamento</p>
+                <h3 class="stack-card__title">De beneficiário para produtor. <span>De assistência para infraestrutura.</span></h3>
+                <ul class="stack-card__tags" aria-label="Frentes">
+                  <li>Compras</li><li>Formação</li><li>Crédito</li><li>Inovação</li><li>Território</li>
+                </ul>
+              </div>
+              <div class="stack-card__side stack-card__side--trio">
+                <div><h4>O fluxo já existe</h4><p>Consumo e talento negros já movimentam a economia. O desafio é fazer parte desse valor virar propriedade, negócio e capacidade instalada.</p></div>
+                <div><h4>A janela é agora</h4><p>A economia digital pode ampliar o abismo se a formação, a tecnologia e os dados forem construídos para poucos.</p></div>
+                <div><h4>A decisão é desenhável</h4><p>Compras, formação, crédito, inovação e território podem ser organizados em projetos com metas, governança e acompanhamento.</p></div>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 

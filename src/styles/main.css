@@ -1047,13 +1047,13 @@ button, input, select { font: inherit; color: inherit; }
 .steps2__viewport::-webkit-scrollbar { display: none; }
 .steps2.is-pinned .steps2__viewport { overflow: visible; }
 .steps2__track { display: flex; align-items: flex-end; gap: 24px; width: max-content; padding: 4px var(--page-x) 4px 0; will-change: transform; }
-.step2-card { display: flex; flex-direction: column; justify-content: space-between; flex: none; width: 456px; padding: 24px; background: #fff; border: 2px solid #f1f1f1; border-radius: 18px; box-shadow: 0 10px 28px -14px rgba(2, 19, 31, 0.18); }
+.step2-card { display: flex; flex-direction: column; justify-content: space-between; flex: none; width: 552px; padding: 24px; background: #fff; border: 2px solid #f1f1f1; border-radius: 18px; box-shadow: 0 10px 28px -14px rgba(2, 19, 31, 0.18); }
 .step2-card:nth-child(2) { height: 388px; }
 .step2-card:nth-child(3) { height: 396px; }
 .step2-card:nth-child(4) { height: 404px; }
 .step2-card--lead { width: 552px; height: 372px; }
-.step2-card h3 { font-weight: 400; font-size: 31px; line-height: 1.2; color: var(--abismo); }
-.step2-card p { margin-top: 24px; font-size: 20px; line-height: 1.3; color: var(--neutral-text-low-emphasis); }
+.step2-card h3 { font-weight: 400; font-size: 56px; line-height: 1; color: var(--abismo); }
+.step2-card p { margin-top: 24px; font-size: 24px; line-height: 1.25; color: var(--neutral-text-low-emphasis); }
 .step2-card--lead h3 { font-size: 56px; line-height: 1; }
 .step2-card--lead p { font-size: 24px; line-height: 1.25; }
 .step2-card img { width: 24px; height: 24px; }

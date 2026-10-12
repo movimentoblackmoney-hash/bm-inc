@@ -8,30 +8,25 @@
     <!--@include header variant="overlay" active="home" cta="#diagnostico"-->
 
     <main id="conteudo">
-      <!-- 1. HERO (vídeo + overlay 70% preto) -->
-      <section class="home-hero" aria-labelledby="hero-title">
-        <video
-          class="home-hero__media"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          poster="/figma/home/hero.webp"
-          aria-hidden="true"
-          data-hero-video
-        >
-          <source src="/figma/home/hero.mp4" type="video/mp4" />
-        </video>
-        <div class="home-hero__overlay" aria-hidden="true"></div>
-        <div class="home-hero__content">
-          <h1 id="hero-title">Organizamos talento, tecnologia, capital e execução territorial para tirar o Brasil do quase.</h1>
-          <p class="lead-text">
-            Quase potência. Quase inovador. Quase capaz de crescer no ritmo que precisa. Somos a engenharia econômica que
-            conecta inovação, responsabilidade e resultado para o seu negócio.
-          </p>
-          <div class="home-hero__ctas">
-            <button class="btn btn--primary" type="button" data-open-form data-intent="Contratar um projeto">Estruturar uma solução <span aria-hidden="true">→</span></button>
+      <!-- 1. HERO: texto central sobre gradiente; fotos em cena 3D que a câmera atravessa ao rolar -->
+      <section class="afk-stage home-stage" aria-labelledby="hero-title" data-afk-stage>
+        <div class="afk-stage__sticky">
+          <div class="afk-stage__bg" aria-hidden="true"></div>
+          <div class="afk-scene" aria-hidden="true">
+            <figure class="afk-float afk-float--a"><img src="/figma/movimento/hero.webp" alt="" width="640" height="360" fetchpriority="high" /></figure>
+            <figure class="afk-float afk-float--b"><img src="/figma/home/card-bm-solutions.webp" alt="" width="640" height="360" /></figure>
+            <figure class="afk-float afk-float--c"><img src="/figma/home/hero.webp" alt="" width="640" height="360" /></figure>
+            <figure class="afk-float afk-float--d"><img src="/figma/home/card-afreektech.webp" alt="" width="640" height="360" /></figure>
+          </div>
+          <div class="afk-stage__copy">
+            <h1 id="hero-title">Organizamos talento, tecnologia, capital e execução territorial para tirar o Brasil do quase.</h1>
+            <p class="afk-stage__lead">
+              Quase potência. Quase inovador. Quase capaz de crescer no ritmo que precisa. Somos a engenharia econômica que
+              conecta inovação, responsabilidade e resultado para o seu negócio.
+            </p>
+            <div class="afk-stage__cta">
+              <button class="btn btn--primary" type="button" data-open-form data-intent="Contratar um projeto">Estruturar uma solução <span aria-hidden="true">→</span></button>
+            </div>
           </div>
         </div>
       </section>

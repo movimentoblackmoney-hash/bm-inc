@@ -402,3 +402,33 @@ document.querySelectorAll('form[data-form]').forEach((form) => {
   fit();
   window.addEventListener('resize', fit);
 })();
+
+/* 12. Afreektech: a câmera avança pela cena 3D enquanto a primeira dobra fica fixa */
+(() => {
+  const stage = document.querySelector('[data-afk-stage]');
+  if (!stage || reduceMotion) return;
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const total = stage.offsetHeight - window.innerHeight;
+    const p = total > 0 ? Math.min(1, Math.max(0, -stage.getBoundingClientRect().top / total)) : 0;
+    stage.style.setProperty('--p', p.toFixed(4));
+  };
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+/* 13. Títulos com "luz" que segue o mouse (mesmo efeito do menu, em escala grande) */
+document.querySelectorAll('[data-spotlight]').forEach((el) => {
+  if (!window.matchMedia('(hover: hover)').matches) return;
+  const host = el.closest('section') || el;
+  host.addEventListener('mousemove', (e) => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--hx', `${(e.clientX - r.left).toFixed(0)}px`);
+    el.style.setProperty('--hy', `${(e.clientY - r.top).toFixed(0)}px`);
+  });
+  host.addEventListener('mouseleave', () => {
+    el.style.setProperty('--hx', '-600px');
+  });
+});

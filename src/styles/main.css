@@ -1213,3 +1213,114 @@ button, input, select { font: inherit; color: inherit; }
 /* Serviços (BM Solutions): tipografia em Medium (500) */
 .stack-services__head h2, .stack-row__n, .stack-row h3, .stack-row__text a, .stack-services__head .eyebrow { font-weight: 500; }
 .stack-row__label { font-weight: 500; }
+
+
+/* ═════════ v3 · Afreektech: primeira dobra — cena 3D; ao rolar a câmera avança e as fotos passam pelas bordas ═════════ */
+.afk-stage { position: relative; height: calc(100vh + 95vh); min-height: 0; background-color: #000; color: #fff; --p: 0; }
+.afk-stage__sticky { position: sticky; top: 0; display: grid; place-items: center; height: 100vh; min-height: 720px; padding: calc(var(--header-h) + 24px) var(--page-x) 72px; overflow: clip; isolation: isolate; }
+.afk-stage__bg { position: absolute; inset: 0; z-index: -3; background:
+  radial-gradient(70% 75% at 0% 100%, rgba(32, 74, 112, 0.95) 0%, rgba(13, 37, 53, 0.6) 38%, transparent 72%),
+  radial-gradient(65% 70% at 100% 88%, rgba(150, 58, 20, 0.9) 0%, rgba(86, 34, 14, 0.55) 40%, transparent 72%),
+  linear-gradient(180deg, #000 0%, #02131f 58%, #0a0f14 100%); }
+.afk-stage__bg::after { content: ''; position: absolute; inset: 0; opacity: 0.16; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.afk-scene { position: absolute; inset: 0; z-index: -1; perspective: 1000px; perspective-origin: 50% 50%; pointer-events: none; }
+.afk-float { --zn: calc(var(--z) + var(--p) * var(--travel, 1700));
+  position: absolute; left: 50%; top: 50%; width: var(--w, 300px); aspect-ratio: 16 / 9; margin: calc(var(--w, 300px) * -0.28) 0 0 calc(var(--w, 300px) * -0.5); overflow: hidden; border-radius: 4px; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.75);
+  transform: translate3d(calc(var(--x) * 1vw), calc(var(--y) * 1vh), calc(var(--zn) * 1px)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) rotate(var(--r, 0deg));
+  opacity: clamp(0, calc((860 - var(--zn)) / 240), 1); will-change: transform, opacity; }
+.afk-float img { width: 100%; height: 100%; object-fit: cover; }
+.afk-float--a { --x: -33; --y: -31; --z: 0; --w: clamp(190px, 21vw, 310px); --rx: 5deg; --ry: -8deg; --r: -1.5deg; }
+.afk-float--b { --x: 31; --y: 29; --z: 120; --w: clamp(210px, 23vw, 350px); --rx: -4deg; --ry: -9deg; --r: 2deg; }
+.afk-float--c { --x: 52; --y: -40; --z: -900; --w: clamp(190px, 21vw, 310px); --rx: 4deg; --ry: 10deg; --r: 2.5deg; }
+.afk-float--d { --x: -70; --y: 44; --z: -1500; --w: clamp(190px, 21vw, 310px); --rx: -5deg; --ry: 8deg; --r: -2deg; --travel: 2100; }
+.afk-stage__copy { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 28px; max-width: 780px; text-align: center; transform: translate3d(0, calc(var(--p) * -24px), 0); }
+.afk-stage h1 { font-weight: 400; font-size: clamp(32px, 4.4vw, 64px); line-height: 1.06; letter-spacing: -0.03em; color: transparent; background: linear-gradient(180deg, #fff 0%, #fff 60%, rgba(255, 255, 255, 0.58) 100%); -webkit-background-clip: text; background-clip: text; text-wrap: balance; }
+.afk-stage__lead { max-width: 640px; font-size: clamp(16px, 1.4vw, 20px); line-height: 1.5; color: var(--linho); }
+.afk-stage__cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 28px; }
+@media (max-width: 900px), (prefers-reduced-motion: reduce) {
+  /* sem cena fixa: composição estática com duas fotos */
+  .afk-stage { height: auto; min-height: 0; --p: 0 !important; }
+  .afk-stage__sticky { position: relative; height: auto; min-height: 0; padding-top: calc(var(--header-h) + 200px); padding-bottom: 200px; }
+  .afk-float--c, .afk-float--d { display: none; }
+  .afk-float { --w: 42vw; margin-top: calc(var(--w) * -0.28); }
+  .afk-float--a { --x: -2; --y: -42; --z: 0; left: 27%; top: calc(var(--header-h) + 90px); margin-top: 0; transform: rotateX(var(--rx)) rotateY(var(--ry)) rotate(var(--r)); }
+  .afk-float--b { --w: 46vw; left: auto; right: 5%; top: auto; bottom: 20px; margin: 0; transform: rotateX(var(--rx)) rotateY(var(--ry)) rotate(var(--r)); }
+  .afk-stage__copy { transform: none; }
+}
+@media (max-width: 900px) { .afk-float--a { left: 6%; top: calc(var(--header-h) + 24px); } }
+
+/* ═════════ v3 · BM Solutions: hero tipográfico com luz que segue o mouse ═════════ */
+.sol2-hero__inner { padding-top: calc(var(--header-h) + 96px); padding-bottom: 120px; gap: 0; }
+.sol2-hero__copy { display: flex; flex-direction: column; align-items: flex-start; gap: 40px; max-width: 1128px; }
+.sol2-hero h1.spot-title { font-weight: 400; font-size: clamp(44px, 6.67vw, 96px); line-height: 1.02; letter-spacing: -0.035em; max-width: 1128px; text-wrap: balance; color: var(--linho); }
+.sol2-hero__aside { max-width: 620px; gap: 24px; }
+.sol2-hero__aside p { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; }
+@media (hover: hover) {
+  .spot-title { color: transparent; background-image: radial-gradient(230px circle at var(--hx, -600px) var(--hy, 50%), #ffffff 0%, #ffffff 28%, rgba(213, 213, 190, 0.56) 100%); background-color: transparent; -webkit-background-clip: text; background-clip: text; }
+  .sol2-hero h1.spot-title { color: transparent; }
+}
+@media (max-width: 900px) {
+  .sol2-hero__inner { padding-top: calc(var(--header-h) + 48px); padding-bottom: 64px; }
+  .sol2-hero__copy { gap: 28px; }
+}
+
+/* BM Solutions · hero conforme o Figma (5088:132): imagem de fundo, título de 96px em 3 linhas e folha branca sobrepondo 52px */
+.sol2-hero { position: relative; min-height: 761px; background: #000 url('/figma/solutions/hero-bg.webp') center / cover no-repeat; }
+.sol2-hero__inner { padding-bottom: 148px; }
+.sol2-hero__copy { gap: 24px; }
+.sol2-hero h1.spot-title { max-width: 640px; font-size: clamp(44px, 6.67vw, 96px); line-height: 1; letter-spacing: -0.015em; }
+.sol2-hero__aside { max-width: 514px; }
+.sol2-hero__aside p { font-size: 18px; line-height: 25px; }
+.steps2 { position: relative; margin-top: -52px; }
+@media (hover: hover) {
+  .spot-title { background-image: radial-gradient(230px circle at var(--hx, -600px) var(--hy, 50%), #ffffff 0%, #ffffff 28%, rgba(213, 213, 190, 0.74) 100%); }
+}
+@media (max-width: 900px) {
+  .sol2-hero { min-height: 0; }
+  .sol2-hero__inner { padding-bottom: 96px; }
+  .steps2 { margin-top: -32px; }
+}
+
+/* ═════════ v3 · hero da BM Solutions em duas colunas (Figma 5088:132) e hero do Afreektech (Figma 5088:232) ═════════ */
+.afk-stage :focus-visible { outline-color: var(--highlight-border); box-shadow: none; }
+@media (min-width: 901px) {
+  .sol2-hero { min-height: 639px; }
+  .sol2-hero__inner { padding-bottom: 96px; }
+  .sol2-hero__copy { display: grid; grid-template-columns: minmax(0, 617px) minmax(0, 514px); gap: 24px; align-items: start; max-width: none; }
+  .sol2-hero h1.spot-title { max-width: none; }
+  .sol2-hero__aside { max-width: none; padding-top: 8px; }
+  /* Afreektech: título mais largo (4 linhas), texto estreito à direita; hero com 761px */
+  .sol2-hero--afk { min-height: 761px; }
+  .sol2-hero--afk .sol2-hero__copy { grid-template-columns: minmax(0, 780px) minmax(0, 290px); justify-content: space-between; gap: 48px; }
+  .sol2-hero--afk .sol2-hero__inner { padding-bottom: 148px; }
+}
+
+/* ═════════ v3 · cards da tese (cor do Figma), 2ª dobra sobrepondo a 1ª e estudos em linhas ═════════ */
+/* Tese: os três cards usam o mesmo tom do Figma (#f4f4ed), com sombra */
+.stack-card, .stack-card:nth-child(2), .stack-card:nth-child(3) { --bg: #f4f4ed; }
+.stack-card { box-shadow: 0 -14px 36px -18px rgba(2, 19, 31, 0.28), 0 24px 48px -28px rgba(2, 19, 31, 0.22); }
+
+/* Páginas internas: a 2ª dobra sobe por cima da 1ª (que fica fixa) */
+@media (min-width: 901px) and (min-height: 700px) {
+  .page--solutions .sol2-hero, .page--afreektech .sol2-hero, .page--movimento .photo-hero { position: sticky; top: 0; z-index: 0; }
+  .page--solutions .steps2, .page--afreektech .stack, .page--movimento .territorial { position: relative; z-index: 1; margin-top: -52px; border-radius: 56px 56px 0 0; }
+}
+@media (max-width: 900px) {
+  .page--afreektech .stack, .page--movimento .territorial { border-radius: 32px 32px 0 0; margin-top: -32px; position: relative; z-index: 1; }
+}
+
+/* Estudos (Afreektech): linhas empilhadas em fundo escuro */
+.repo--rows h2 { font-weight: 500; font-size: clamp(32px, 3.33vw, 48px); line-height: 1.05; letter-spacing: -0.02em; color: var(--linho); }
+.repo--rows .repo__inner { gap: 56px; padding-bottom: 120px; }
+.stack-list--dark { margin: 0; padding: 0; list-style: none; }
+.repo--rows .stack-row { min-height: 300px; background: var(--abismo); border-top-color: rgba(213, 213, 190, 0.22); }
+.repo--rows .stack-row__n { color: var(--linho); }
+.repo--rows .stack-row h3 { color: var(--linho); font-weight: 500; }
+.repo--rows .stack-row__label { margin: 56px 0 0; color: var(--primary-text); }
+.repo--rows .stack-row__text p { color: var(--neutral-text-inverse-low-emphasis); }
+.repo--rows .stack-row__text a { color: var(--primary-text); }
+.repo--rows .stack-row__main { gap: 0; }
+@media (max-width: 900px) {
+  .repo--rows .stack-row { position: static; min-height: 0; }
+  .repo--rows .stack-row__label { margin-top: 20px; }
+}

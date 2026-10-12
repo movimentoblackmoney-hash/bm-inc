@@ -11,9 +11,13 @@
             <option value="" selected disabled>Escolher uma porta de entrada</option>
             <option>Contratar um projeto</option>
             <option>Financiar uma frente</option>
-            <option>Acessar a tese</option>
+            <option>Acessar conteúdo</option>
             <option>Falar sobre outro assunto</option>
           </select>
+        </div>
+        <div class="field" data-other-field hidden>
+          <label for="lead-assunto">Conte o assunto</label>
+          <textarea id="lead-assunto" name="assunto" rows="3" placeholder="Do que você precisa? Quanto mais contexto, melhor."></textarea>
         </div>
         <div class="field">
           <label for="lead-nome">Nome completo</label>
@@ -29,7 +33,7 @@
             <input id="lead-org" name="organizacao" type="text" placeholder="Nome da organização" autocomplete="organization" required />
           </div>
         </div>
-        <button class="btn btn--submit" type="submit">Abrir conversa <span aria-hidden="true">→</span></button>
+        <button class="btn btn--submit" type="submit" data-submit-cta><span data-submit-label>Abrir conversa</span> <span aria-hidden="true">→</span></button>
         <p class="form__hint">Usaremos estas informações apenas para encaminhar a conversa à frente certa.</p>
         <p class="form__status" role="status" aria-live="polite"></p>
       </form>

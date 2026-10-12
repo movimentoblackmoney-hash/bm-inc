@@ -253,7 +253,8 @@ if (heroVideo) {
    - Se VITE_FORM_ENDPOINT estiver definido, envia JSON por POST.
    - Senão, abre o e-mail do usuário com a mensagem pronta (mailto), sem simular envio. */
 const FORM_ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT;
-const FORM_TO = import.meta.env.VITE_FORM_TO || 'contato@movimentoblackmoney.com.br';
+const FORM_TO = import.meta.env.VITE_FORM_TO || 'movimentoblackmoney@gmail.com';
+const FORM_SUBJECT = 'Contato - Site bminc';
 const FORM_LABELS = { diagnostico: 'Diagnóstico estratégico', relatorio: 'Relatório completo', territorial: 'Expansão territorial', estudo: 'Estudo — Sem o Negro, o Brasil não Cresce' };
 
 document.querySelectorAll('form[data-form]').forEach((form) => {
@@ -287,19 +288,24 @@ document.querySelectorAll('form[data-form]').forEach((form) => {
     }
     const data = Object.fromEntries(new FormData(form).entries());
     const assunto = FORM_LABELS[form.dataset.form] || 'Contato pelo site';
-    if (FORM_ENDPOINT) {
-      try {
-        const res = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ formulario: form.dataset.form, ...data }) });
-        if (!res.ok) throw new Error(String(res.status));
+    const payload = { formulario: assunto, ...data };
+    const submitBtn = form.querySelector('[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+    // 1) endpoint próprio (Vercel /api/contato) ou externo (VITE_FORM_ENDPOINT)
+    try {
+      const res = await fetch(FORM_ENDPOINT || '/api/contato', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      if (res.ok) {
         form.reset();
-        say('Recebemos sua solicitação. Em breve entraremos em contato.');
-      } catch {
-        say('Não foi possível enviar agora. Tente novamente em instantes.', 'error');
+        form.dispatchEvent(new Event('bm:reset'));
+        say('Recebemos sua mensagem. Em breve entraremos em contato.');
+        if (submitBtn) submitBtn.disabled = false;
+        return;
       }
-      return;
-    }
-    const corpo = Object.entries(data).map(([k, v]) => `${k}: ${v}`).join('\n');
-    location.href = `mailto:${FORM_TO}?subject=${encodeURIComponent(`[Site BM.inc] ${assunto}`)}&body=${encodeURIComponent(corpo)}`;
+    } catch { /* cai no e-mail */ }
+    if (submitBtn) submitBtn.disabled = false;
+    // 2) alternativa: abre o e-mail do usuário já preenchido
+    const corpo = Object.entries(payload).map(([k, v]) => `${k}: ${v}`).join('\n');
+    location.href = `mailto:${FORM_TO}?subject=${encodeURIComponent(FORM_SUBJECT)}&body=${encodeURIComponent(corpo)}`;
     say('Abrimos seu e-mail com a mensagem pronta. É só enviar.');
   });
 });
@@ -432,3 +438,210 @@ document.querySelectorAll('[data-spotlight]').forEach((el) => {
     el.style.setProperty('--hx', '-600px');
   });
 });
+
+
+/* 14. Formulários: dropdown próprio, CTA que muda com a escolha e campo para "outro assunto" */
+(() => {
+  const CTA_BY_INTENT = {
+    'Contratar um projeto': 'Estruturar meu projeto',
+    'Financiar uma frente': 'Quero apoiar uma frente',
+    'Acessar conteúdo': 'Receber o conteúdo',
+    'Falar sobre outro assunto': 'Enviar mensagem',
+  };
+
+  // Dropdown acessível (botão + listbox) sincronizado com o <select> original
+  const enhance = (select) => {
+    if (select.dataset.dd) return;
+    select.dataset.dd = '1';
+    const wrap = document.createElement('div');
+    wrap.className = 'dd';
+    select.parentNode.insertBefore(wrap, select);
+    wrap.appendChild(select);
+    select.tabIndex = -1;
+    select.setAttribute('aria-hidden', 'true');
+
+    const label = document.querySelector(`label[for="${select.id}"]`);
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'dd__btn';
+    btn.id = `${select.id}-btn`;
+    btn.setAttribute('aria-haspopup', 'listbox');
+    btn.setAttribute('aria-expanded', 'false');
+    if (label) {
+      label.id ||= `${select.id}-label`;
+      btn.setAttribute('aria-labelledby', `${label.id} ${btn.id}`);
+    }
+    const list = document.createElement('ul');
+    list.className = 'dd__list';
+    list.id = `${select.id}-list`;
+    list.setAttribute('role', 'listbox');
+    if (label) list.setAttribute('aria-labelledby', label.id);
+    btn.setAttribute('aria-controls', list.id);
+    wrap.append(btn, list);
+
+    [...select.options].filter((o) => !o.disabled).forEach((o, i) => {
+      const li = document.createElement('li');
+      li.className = 'dd__opt';
+      li.setAttribute('role', 'option');
+      li.id = `${select.id}-opt-${i}`;
+      li.textContent = o.textContent;
+      li._o = o;
+      list.appendChild(li);
+    });
+    const items = () => [...list.children];
+    let active = 0;
+    const setActive = (i) => {
+      active = Math.max(0, Math.min(items().length - 1, i));
+      items().forEach((li, k) => {
+        if (k === active) {
+          li.setAttribute('data-active', '');
+          list.setAttribute('aria-activedescendant', li.id);
+          li.scrollIntoView({ block: 'nearest' });
+        } else li.removeAttribute('data-active');
+      });
+    };
+    const sync = () => {
+      const o = select.selectedOptions[0];
+      btn.textContent = o ? o.textContent : '';
+      if (!select.value) btn.setAttribute('data-empty', '');
+      else btn.removeAttribute('data-empty');
+      items().forEach((li) => li.setAttribute('aria-selected', String(!!select.value && li._o.value === select.value)));
+    };
+    const open = () => {
+      wrap.setAttribute('data-open', '');
+      btn.setAttribute('aria-expanded', 'true');
+      setActive(Math.max(0, items().findIndex((li) => li._o.value === select.value)));
+    };
+    const close = (focus = true) => {
+      wrap.removeAttribute('data-open');
+      btn.setAttribute('aria-expanded', 'false');
+      if (focus) btn.focus();
+    };
+    const choose = (i) => {
+      select.value = items()[i]._o.value;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+      btn.removeAttribute('aria-invalid');
+      sync();
+      close();
+    };
+    btn.addEventListener('click', () => (wrap.hasAttribute('data-open') ? close(false) : open()));
+    btn.addEventListener('keydown', (e) => {
+      const isOpen = wrap.hasAttribute('data-open');
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (!isOpen) open();
+        else setActive(active + (e.key === 'ArrowDown' ? 1 : -1));
+      } else if ((e.key === 'Enter' || e.key === ' ') && isOpen) {
+        e.preventDefault();
+        choose(active);
+      } else if (e.key === 'Escape' && isOpen) {
+        e.preventDefault();
+        e.stopPropagation();
+        close();
+      } else if (e.key === 'Tab' && isOpen) close(false);
+    });
+    list.addEventListener('mousedown', (e) => e.preventDefault());
+    list.addEventListener('click', (e) => {
+      const li = e.target.closest('.dd__opt');
+      if (li) choose(items().indexOf(li));
+    });
+    document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(false); });
+    select.addEventListener('change', sync);
+    select.form?.addEventListener('reset', () => setTimeout(sync));
+    select.form?.addEventListener('bm:reset', sync);
+    sync();
+  };
+  document.querySelectorAll('form[data-form] select').forEach(enhance);
+
+  // CTA e campo "outro assunto"
+  document.querySelectorAll('form[data-form]').forEach((form) => {
+    const intent = form.querySelector('#lead-intencao');
+    if (!intent) return;
+    const label = form.querySelector('[data-submit-label]');
+    const other = form.querySelector('[data-other-field]');
+    const otherInput = other?.querySelector('textarea');
+    const update = () => {
+      const v = intent.value;
+      if (label) label.textContent = CTA_BY_INTENT[v] || 'Abrir conversa';
+      if (other) {
+        const show = v === 'Falar sobre outro assunto';
+        other.hidden = !show;
+        if (otherInput) otherInput.required = show;
+      }
+    };
+    intent.addEventListener('change', update);
+    form.addEventListener('bm:reset', update);
+    form.addEventListener('reset', () => setTimeout(update));
+    // portas de entrada preenchem o campo por script: atualiza CTA e campo extra depois do clique
+    document.addEventListener('click', (e) => {
+      if (e.target.closest?.('[data-intent]')) setTimeout(() => { intent.dispatchEvent(new Event('change')); }, 0);
+    });
+    update();
+  });
+})();
+
+
+/* 15. Linhas empilhadas (serviços da BM Solutions e estudos do Afreektech).
+   Um palco fixo no topo; cada linha sobe por cima da anterior conforme a rolagem e, no fim, o bloco inteiro sai junto
+   (nada some "do nada" como acontecia com sticky individual). */
+(() => {
+  const lists = [...document.querySelectorAll('.stack-list:not([data-no-stack])')];
+  if (!lists.length) return;
+  const mq = window.matchMedia('(min-width: 901px) and (min-height: 600px) and (prefers-reduced-motion: no-preference)');
+  const PITCH = 96;   // quanto cada linha recolhida deixa à mostra
+  const STEP = 320;   // rolagem necessária para cada linha chegar
+  const TOP = 24;
+
+  const setups = lists.map((list) => {
+    const rows = [...list.children];
+    const scroller = document.createElement('div');
+    scroller.className = 'stack-scroll';
+    list.parentNode.insertBefore(scroller, list);
+    scroller.appendChild(list);
+    return { list, rows, scroller, active: false, H: 0, W: 0 };
+  });
+
+  const layout = (s) => {
+    const n = s.rows.length;
+    s.list.classList.add('is-stacked');
+    s.rows.forEach((r) => { r.style.transform = ''; r.style.height = 'auto'; });
+    s.H = Math.ceil(Math.max(...s.rows.map((r) => r.scrollHeight)));
+    s.W = s.H + (n - 1) * PITCH;
+    s.rows.forEach((r) => { r.style.height = `${s.H}px`; });
+    s.list.style.height = `${s.W}px`;
+    s.scroller.style.height = `${s.W + (n - 1) * STEP + TOP}px`;
+    s.active = true;
+  };
+  const unlayout = (s) => {
+    s.list.classList.remove('is-stacked');
+    s.list.style.height = '';
+    s.scroller.style.height = '';
+    s.rows.forEach((r) => { r.style.transform = ''; r.style.height = ''; });
+    s.active = false;
+  };
+  const paint = (s) => {
+    if (!s.active) return;
+    const n = s.rows.length;
+    const top = s.scroller.getBoundingClientRect().top;
+    const p = Math.min(n - 1, Math.max(0, (TOP - top) / STEP));
+    s.rows.forEach((r, i) => {
+      let y = 0;
+      if (i > 0) {
+        const t = Math.min(1, Math.max(0, p - (i - 1)));
+        y = s.W - (s.W - i * PITCH) * t;
+      }
+      r.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0)`;
+    });
+  };
+  const refresh = () => {
+    setups.forEach((s) => {
+      if (mq.matches) layout(s); else unlayout(s);
+      paint(s);
+    });
+  };
+  refresh();
+  window.addEventListener('scroll', () => setups.forEach(paint), { passive: true });
+  window.addEventListener('resize', refresh);
+  mq.addEventListener('change', refresh);
+  if (document.fonts?.ready) document.fonts.ready.then(refresh);
+})();

@@ -8,60 +8,62 @@
     <!--@include header variant="overlay" active="solutions" cta="#diagnostico"-->
 
     <main id="conteudo">
-      <!-- 1. HERO -->
-      <section class="sol2-hero" aria-labelledby="sol-title">
-        <div class="sol2-hero__inner">
-          <div class="sol2-hero__copy">
-            <h1 id="sol-title" class="spot-title" data-spotlight>Do desafio estratégico à ação real.</h1>
-            <div class="sol2-hero__aside">
-              <p>Programas de inovação aberta, palestras e workshops para organizações que querem transformar uma pauta importante em uma decisão executável.</p>
-              <a class="link-underline" href="#servicos">Conhecer as ofertas</a>
+      <div class="fold-pair">
+        <!-- 1. HERO -->
+        <section class="sol2-hero" aria-labelledby="sol-title">
+          <div class="sol2-hero__inner">
+            <div class="sol2-hero__copy">
+              <h1 id="sol-title" class="spot-title" data-spotlight>Do desafio estratégico à ação real.</h1>
+              <div class="sol2-hero__aside">
+                <p>Programas de inovação aberta, palestras e workshops para organizações que querem transformar uma pauta importante em uma decisão executável.</p>
+                <a class="link-underline" href="#servicos">Conhecer as ofertas</a>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- 2. QUATRO ETAPAS (Inovahack): cards que correm na horizontal ao rolar -->
-      <section class="steps2" id="inovahack" aria-labelledby="steps-title" data-steps>
-        <div class="steps2__stage" data-steps-stage>
-          <div class="steps2__head">
-            <h2 id="steps-title">4 etapas até a capacidade instalada</h2>
-            <a class="btn btn--primary" href="#diagnostico" data-open-form data-intent="Contratar um projeto">Estruturar um Inovahack <span aria-hidden="true">→</span></a>
+        <!-- 2. QUATRO ETAPAS (Inovahack): cards que correm na horizontal ao rolar -->
+        <section class="steps2" id="inovahack" aria-labelledby="steps-title" data-steps>
+          <div class="steps2__stage" data-steps-stage>
+            <div class="steps2__head">
+              <h2 id="steps-title">Um método validado que transforma ideias em negócios.</h2>
+              <a class="btn btn--primary" href="#diagnostico" data-open-form data-intent="Contratar um projeto">Estruturar um Inovahack <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="steps2__viewport">
+              <ol class="steps2__track" data-steps-track>
+                <li class="step2-card step2-card--lead">
+                  <div>
+                    <h3>Desafio</h3>
+                    <p>Definir o problema real a ser resolvido com clareza e foco estratégico. Organizamos a pergunta para que ela possa ser enfrentada por pessoas, dados e soluções diferentes.</p>
+                  </div>
+                  <img src="/figma/solutions/icon-game.svg" alt="" width="24" height="24" />
+                </li>
+                <li class="step2-card">
+                  <div>
+                    <h3>Curadoria</h3>
+                    <p>Selecionar as melhores ideias e times para avançar para a próxima fase. Conectamos repertórios, talentos e negócios que normalmente não chegam à mesma mesa.</p>
+                  </div>
+                  <img src="/figma/solutions/icon-dataflow.svg" alt="" width="24" height="24" />
+                </li>
+                <li class="step2-card">
+                  <div>
+                    <h3>Protótipo</h3>
+                    <p>Construir e validar uma solução rápida e testável com usuários reais. Prototipamos, escolhemos pilotos e definimos o que precisa acontecer para uma decisão de escala.</p>
+                  </div>
+                  <img src="/figma/solutions/icon-tv.svg" alt="" width="24" height="24" />
+                </li>
+                <li class="step2-card">
+                  <div>
+                    <h3>Piloto</h3>
+                    <p>Implementar a solução em escala controlada e medir resultados reais. Formamos as equipes para que o aprendizado se torne método próprio e sustentável.</p>
+                  </div>
+                  <img src="/figma/solutions/icon-cash.svg" alt="" width="24" height="24" />
+                </li>
+              </ol>
+            </div>
           </div>
-          <div class="steps2__viewport">
-            <ol class="steps2__track" data-steps-track>
-              <li class="step2-card step2-card--lead">
-                <div>
-                  <h3>Desafio</h3>
-                  <p>Definir o problema real a ser resolvido com clareza e foco estratégico. Organizamos a pergunta para que ela possa ser enfrentada por pessoas, dados e soluções diferentes.</p>
-                </div>
-                <img src="/figma/solutions/icon-game.svg" alt="" width="24" height="24" />
-              </li>
-              <li class="step2-card">
-                <div>
-                  <h3>Curadoria</h3>
-                  <p>Selecionar as melhores ideias e times para avançar para a próxima fase. Conectamos repertórios, talentos e negócios que normalmente não chegam à mesma mesa.</p>
-                </div>
-                <img src="/figma/solutions/icon-dataflow.svg" alt="" width="24" height="24" />
-              </li>
-              <li class="step2-card">
-                <div>
-                  <h3>Protótipo</h3>
-                  <p>Construir e validar uma solução rápida e testável com usuários reais. Prototipamos, escolhemos pilotos e definimos o que precisa acontecer para uma decisão de escala.</p>
-                </div>
-                <img src="/figma/solutions/icon-tv.svg" alt="" width="24" height="24" />
-              </li>
-              <li class="step2-card">
-                <div>
-                  <h3>Piloto</h3>
-                  <p>Implementar a solução em escala controlada e medir resultados reais. Formamos as equipes para que o aprendizado se torne método próprio e sustentável.</p>
-                </div>
-                <img src="/figma/solutions/icon-cash.svg" alt="" width="24" height="24" />
-              </li>
-            </ol>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <!-- 3. SERVIÇOS: linhas empilhadas (referência: lamalama.com/services/branding) -->
       <section class="stack-services" id="servicos" aria-labelledby="services-title">

@@ -1443,3 +1443,14 @@ h1, h2, h3, h4, h5, h6 { font-weight: 400; }
   background: radial-gradient(min(820px, 62vw) circle at calc(var(--mx) * 1%) calc(var(--my) * 1%), rgba(var(--glow-b), 0.55) 0%, rgba(var(--glow-b), 0.22) 38%, transparent 70%); }
 .sol2-hero.is-pointer::after { opacity: 1; }
 @media (hover: none), (prefers-reduced-motion: reduce) { .sol2-hero::after { display: block; opacity: 0.6; } }
+
+/* Próximo passo: seção branca com card central azul (Abismo) e o brilho azul dos heros */
+.next { background: #fff; padding: 88px var(--page-x); }
+.next__inner { position: relative; isolation: isolate; max-width: 1128px; margin: 0 auto; padding: 72px 64px; overflow: clip; border-radius: 40px; align-items: center;
+  background: radial-gradient(70% 90% at 0% 100%, rgba(58, 122, 184, 0.55) 0%, rgba(30, 72, 112, 0.28) 42%, transparent 74%), var(--abismo); }
+.next__inner::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.03; mix-blend-mode: screen; background-size: 180px 180px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+@media (max-width: 900px) {
+  .next { padding: 48px var(--page-x); }
+  .next__inner { padding: 40px 24px; border-radius: 28px; }
+}

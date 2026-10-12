@@ -1423,3 +1423,23 @@ h1, h2, h3, h4, h5, h6 { font-weight: 400; }
 /* Estudos: lista estática, todos os materiais visíveis assim que a dobra aparece */
 .repo--rows .stack-row { position: static; min-height: 0; padding-bottom: 40px; }
 .repo--rows .stack-row__main { min-height: 120px; }
+
+/* ═════════ Gradiente dos heros reage ao mouse: os focos de cor seguem o cursor com atraso e uma luz suave acompanha o ponteiro ═════════ */
+.sol2-hero { --mx: 50; --my: 60; background-image:
+    radial-gradient(70% 80% at calc(var(--mx) * 0.22%) calc(108% - var(--my) * 0.18%), rgba(var(--glow-a), 0.95) 0%, rgba(13, 37, 53, 0.6) 38%, transparent 72%),
+    radial-gradient(65% 75% at calc(100% - (100 - var(--mx)) * 0.22%) calc(104% - var(--my) * 0.2%), rgba(var(--glow-b), 0.9) 0%, rgba(var(--glow-b), 0.4) 42%, transparent 72%),
+    linear-gradient(180deg, #000 0%, #02131f 60%, #0a0f14 100%); }
+.sol2-hero::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; mix-blend-mode: screen; opacity: 0; transition: opacity 400ms var(--motion-timing-ease-out);
+  background: radial-gradient(380px circle at calc(var(--mx) * 1%) calc(var(--my) * 1%), rgba(var(--glow-b), 0.38) 0%, rgba(var(--glow-a), 0.14) 45%, transparent 70%); }
+.sol2-hero.is-pointer::after { opacity: 1; }
+@media (hover: none), (prefers-reduced-motion: reduce) { .sol2-hero::after { display: none; } }
+
+/* Gradiente v3.1: só o azul (mais claro) fixo no canto esquerdo; a cor da unidade vive numa luz grande que segue o mouse */
+.sol2-hero { --glow-a: 58, 122, 184; --mx: 80; --my: 72;
+  background-image:
+    radial-gradient(78% 92% at calc(var(--mx) * 0.1%) calc(108% - var(--my) * 0.12%), rgba(var(--glow-a), 0.95) 0%, rgba(30, 72, 112, 0.6) 40%, transparent 74%),
+    linear-gradient(180deg, #000 0%, #02131f 60%, #0a0f14 100%); }
+.sol2-hero::after { display: block; opacity: 0.6; mix-blend-mode: screen;
+  background: radial-gradient(min(820px, 62vw) circle at calc(var(--mx) * 1%) calc(var(--my) * 1%), rgba(var(--glow-b), 0.55) 0%, rgba(var(--glow-b), 0.22) 38%, transparent 70%); }
+.sol2-hero.is-pointer::after { opacity: 1; }
+@media (hover: none), (prefers-reduced-motion: reduce) { .sol2-hero::after { display: block; opacity: 0.6; } }

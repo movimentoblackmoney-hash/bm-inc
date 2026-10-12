@@ -77,31 +77,11 @@
         </div>
       </section>
 
-      <!-- FORMULÁRIO TERRITORIAL -->
-      <section class="territory-form" id="diagnostico" aria-labelledby="tf-title">
-        <div class="territory-form__inner">
-          <header>
-            <p class="eyebrow eyebrow--orange">B2G / Escala de execução</p>
-            <h2 id="tf-title">Solicitar expansão do ecossistema territorial</h2>
-          </header>
-          <form class="form form--light-fields" data-form="territorial" novalidate>
-            <div class="field-row">
-              <div class="field">
-                <label for="tf-org">Órgão ou organização</label>
-                <input id="tf-org" name="organizacao" type="text" placeholder="Ex: Secretaria de Inovação de Belém" autocomplete="organization" required />
-              </div>
-              <div class="field">
-                <label for="tf-email">E-mail institucional</label>
-                <input id="tf-email" name="email" type="email" placeholder="Ex: contato@orgao.gov.br" autocomplete="email" required />
-              </div>
-            </div>
-            <button class="btn btn--primary btn--lg" type="submit">Abrir conversa técnica <span aria-hidden="true">→</span></button>
-            <p class="form__status form__status--on-dark" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </section>
+      <!--@include next-step-->
     </main>
 
-    <!--@include footer-->
+    <!--@include contact-dialog-->
+
+    <!--@include footer tone="site-footer--light"-->
   </body>
 </html>

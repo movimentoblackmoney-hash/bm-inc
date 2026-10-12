@@ -645,3 +645,30 @@ document.querySelectorAll('[data-spotlight]').forEach((el) => {
   mq.addEventListener('change', refresh);
   if (document.fonts?.ready) document.fonts.ready.then(refresh);
 })();
+
+/* 16. Gradiente do hero reage ao mouse (foco de cor segue o cursor com suavização) */
+(() => {
+  const hero = document.querySelector('.sol2-hero');
+  if (!hero || reduceMotion || !window.matchMedia('(hover: hover)').matches) return;
+  let cx = 80, cy = 72, tx = 80, ty = 72, raf = 0;
+  const tick = () => {
+    cx += (tx - cx) * 0.09;
+    cy += (ty - cy) * 0.09;
+    hero.style.setProperty('--mx', cx.toFixed(2));
+    hero.style.setProperty('--my', cy.toFixed(2));
+    raf = Math.abs(tx - cx) > 0.05 || Math.abs(ty - cy) > 0.05 ? requestAnimationFrame(tick) : 0;
+  };
+  const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+  hero.addEventListener('mousemove', (e) => {
+    const r = hero.getBoundingClientRect();
+    tx = Math.min(100, Math.max(0, ((e.clientX - r.left) / r.width) * 100));
+    ty = Math.min(100, Math.max(0, ((e.clientY - r.top) / r.height) * 100));
+    hero.classList.add('is-pointer');
+    kick();
+  });
+  hero.addEventListener('mouseleave', () => {
+    tx = 80; ty = 72;
+    hero.classList.remove('is-pointer');
+    kick();
+  });
+})();

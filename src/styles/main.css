@@ -1583,3 +1583,6 @@ h1, h2, h3, h4, h5, h6 { font-weight: 400; }
   .fold-pair > :nth-child(2) { position: relative; z-index: 1; margin-top: -32px; border-radius: 32px 32px 0 0; background: #fff; }
   .page--solutions .steps2 { margin-top: 0; border-radius: 0; }
 }
+
+/* Próximo passo: o card ocupa a mesma largura de conteúdo das outras dobras (bordas alinhadas em qualquer tela) */
+.next__inner { max-width: none; margin-inline: 0; }

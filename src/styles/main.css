@@ -1547,3 +1547,39 @@ h1, h2, h3, h4, h5, h6 { font-weight: 400; }
 
 /* V5.6 · cases: só tokens da marca (Abismo #02131F → #0D2535 → #163347 e Terracota #E96731 na base) */
 .case a::before { background: linear-gradient(180deg, #02131f 0%, #0d2535 44%, #163347 64%, #a85a3f 78%, #e96731 90%, #e96731 100%); }
+
+/* ═════════ V6 · proposta do Alan no layout do site: dobras de apoio, página de metodologia ═════════ */
+.work--soft, .method--soft { background: var(--extra-surface-soft); }
+.work--statement .work__inner { grid-template-columns: minmax(0, 1fr); }
+.sol2-hero__tag { margin-bottom: -8px; font-size: 12px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--neutral-text-inverse-low-emphasis); }
+.sol2-hero__aside .sol2-hero__links { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 4px; }
+.sol2-hero__links .btn { font-size: 14px; }
+.method--cards .method__grid { list-style: none; margin: 0; padding: 0; }
+.method--cards .info-card { gap: 12px; }
+.method--cards .info-card h3 { font-size: 22px; line-height: 30px; }
+.work--lab .work__chips { flex-direction: row; flex-wrap: wrap; }
+.work--lab .work__chips li { flex: 1 1 140px; }
+
+/* Página de metodologia */
+.thesis .work__inner { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 72px; }
+.thesis .work__text h2 { font-size: clamp(32px, 3.4vw, 52px); line-height: 1.08; letter-spacing: -0.02em; }
+.thesis__text { display: flex; flex-direction: column; gap: 20px; }
+.thesis__text p { font-size: 20px; line-height: 30px; color: var(--abismo); }
+.thesis__text p + p { font-size: 16px; line-height: 24px; color: var(--neutral-text-low-emphasis); }
+.info-card--evidence { gap: 14px; }
+.info-card--evidence .status { align-self: flex-start; }
+.met-note { margin-top: 8px; font-size: 14px; line-height: 20px; color: var(--neutral-text-low-emphasis); }
+.met-material .lab-two__inner { align-items: start; }
+.page--metodologia .sol2-hero { --glow-b: 150, 160, 170; }
+
+/* 2ª dobra de cada par sobe por cima do hero; hero fica fixo só enquanto ela sobe */
+@media (min-width: 901px) and (min-height: 700px) {
+  .page--metodologia .sol2-hero { position: sticky; top: 0; z-index: 0; }
+  .fold-pair > :nth-child(2) { position: relative; z-index: 1; margin-top: -52px; border-radius: 56px 56px 0 0; background: #fff; }
+  .page--solutions .steps2, .page--movimento .territorial { margin-top: 0; border-radius: 0; }
+}
+@media (max-width: 900px) {
+  .thesis .work__inner { grid-template-columns: 1fr; gap: 28px; }
+  .fold-pair > :nth-child(2) { position: relative; z-index: 1; margin-top: -32px; border-radius: 32px 32px 0 0; background: #fff; }
+  .page--solutions .steps2 { margin-top: 0; border-radius: 0; }
+}

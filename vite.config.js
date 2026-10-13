@@ -37,6 +37,7 @@ export default defineConfig({
         'bm-solutions': resolve(root, 'bm-solutions.html'),
         afreektech: resolve(root, 'afreektech.html'),
         movimento: resolve(root, 'movimento.html'),
+        metodologia: resolve(root, 'metodologia.html'),
         'case-petrobras': resolve(root, 'case-petrobras.html'),
       },
     },

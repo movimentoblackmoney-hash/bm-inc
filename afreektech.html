@@ -9,70 +9,98 @@
 
     <main id="conteudo">
       <div class="fold-pair">
-        <!-- HERO (Figma 5088:232): título grande sobre imagem, texto e link à direita -->
+        <!-- HERO: gradiente sem fotos; título grande com a luz do mouse -->
         <section class="sol2-hero sol2-hero--afk" aria-labelledby="afk-title">
           <div class="sol2-hero__inner">
             <div class="sol2-hero__copy">
               <h1 id="afk-title" class="spot-title" data-spotlight>O apagão de mão de obra não pode ser seu risco financeiro.</h1>
               <div class="sol2-hero__aside">
-                <p>Formamos desenvolvedores, cientistas de dados e líderes em STEM sob a metodologia de altíssima exigência técnica de Afreektech, convertendo capacidade subprecificada em entrega executiva escalável.</p>
-                <a class="link-underline" href="#tese">Conhecer as ofertas</a>
+                <p class="sol2-hero__tag">Afreektech / Talento e tecnologia</p>
+                <p>Patrocínio de turmas, formação customizada e primeiras soluções de conexão entre profissionais e empresas para uma economia que não pode continuar estreitando o próprio pipeline.</p>
+                <div class="sol2-hero__links">
+                  <button class="btn btn--primary" type="button" data-open-form data-intent="Contratar um projeto">Patrocinar uma turma <span aria-hidden="true">→</span></button>
+                  <a class="link-underline" href="#como-entregamos">Ver como funciona</a>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- TESE: 3 cards empilhados (stacked scroll) -->
-        <section class="stack" id="tese" aria-labelledby="stack-title">
-          <div class="stack__inner">
-            <h2 class="sr-only" id="stack-title">A tese da Afreektech</h2>
-            <div class="stack__list" data-stack>
-              <article class="stack-card" style="--i: 0">
-                <div class="stack-card__main">
-                  <h3 class="stack-card__title">Inclusão econômica não é custo social. <span>É correção de alocação.</span></h3>
-                  <ul class="stack-card__tags" aria-label="Eixos">
-                    <li>Formação</li><li>Crédito</li><li>Contratos</li><li>Tecnologia</li>
-                  </ul>
-                </div>
-                <div class="stack-card__side">
-                  <p>O Brasil não precisa inventar uma população produtiva. Ela já existe. O que precisa ser redesenhado é a estrutura que decide quem acessa formação, crédito, contratos e os lugares onde o valor fica.</p>
-                  <p>O estudo organiza essa conversa em uma linguagem capaz de chegar à empresa, ao governo e a quem financia, sem esconder método, intervalo ou limite.</p>
-                </div>
-              </article>
-
-              <article class="stack-card" style="--i: 1">
-                <div class="stack-card__main">
-                  <h3 class="stack-card__title">Formação STEM de elite <span>para cadeias produtivas reais.</span></h3>
-                  <p class="stack-card__lead">Acreditamos que o erro de alocação de talentos no Brasil retarda o avanço do desenvolvimento tecnológico de ponta nacional. Afreektech reconfigura o pipeline de contratação conectando mentes brilhantes a empresas de forma sustentável, reduzindo o turn-over e garantindo governança robusta.</p>
-                </div>
-                <div class="stack-card__side">
-                  <p class="stack-card__label">Custo da inação</p>
-                  <ol class="stack-card__list">
-                    <li><span>01</span><p>Estagnação de produtividade sistêmica devido à defasagem técnica das equipes de tecnologia corporativa.</p></li>
-                    <li><span>02</span><p>Dependência excessiva de soluções de terceirização global de software com custo indexado ao dólar.</p></li>
-                    <li><span>03</span><p>Perda de alfa alocativo por ausência de engenharia de impacto social profundo nas metas internas.</p></li>
-                  </ol>
-                </div>
-              </article>
-
-              <article class="stack-card" style="--i: 2">
-                <div class="stack-card__main">
-                  <h3 class="stack-card__title">De beneficiário para produtor. <span>De assistência para infraestrutura.</span></h3>
-                  <ul class="stack-card__tags" aria-label="Frentes">
-                    <li>Compras</li><li>Formação</li><li>Crédito</li><li>Inovação</li><li>Território</li>
-                  </ul>
-                </div>
-                <div class="stack-card__side stack-card__side--trio">
-                  <div><h4>O fluxo já existe</h4><p>Consumo e talento negros já movimentam a economia. O desafio é fazer parte desse valor virar propriedade, negócio e capacidade instalada.</p></div>
-                  <div><h4>A janela é agora</h4><p>A economia digital pode ampliar o abismo se a formação, a tecnologia e os dados forem construídos para poucos.</p></div>
-                  <div><h4>A decisão é desenhável</h4><p>Compras, formação, crédito, inovação e território podem ser organizados em projetos com metas, governança e acompanhamento.</p></div>
-                </div>
-              </article>
-            </div>
+        <section class="work" aria-labelledby="afk-trabalho">
+        <div class="work__inner">
+          <div class="work__text">
+            <p class="eyebrow">O trabalho</p>
+            <h2 id="afk-trabalho">Formação técnica que chega onde a economia digital decide.</h2>
+            <p>A Afreektech transforma acesso em capacidade. Empresas entram como patrocinadoras, parceiras de formação ou coautoras de projetos que aproximam talentos negros e periféricos das funções críticas da nova economia.</p>
           </div>
-        </section>
+          <ul class="work__chips">
+            <li><strong>Turmas</strong><span>patrocinadas por empresas</span></li>
+            <li><strong>Sob medida</strong><span>formação para desafios reais</span></li>
+            <li><strong>RHtech</strong><span>soluções em POC</span></li>
+          </ul>
+        </div>
+      </section>
       </div>
 
+      <section class="method method--cards" id="como-entregamos" aria-labelledby="como-entregamos">
+        <div class="method__inner">
+          <header class="section-head">
+            <p class="eyebrow">Como entregamos</p>
+            <h2 id="como-entregamos">Uma oferta clara para uma decisão que precisa sair do papel.</h2>
+          </header>
+          <ol class="method__grid">
+            <li class="info-card">
+              <p class="info-card__big">01</p>
+              <h3>Patrocínio de turmas</h3>
+              <p>Invista na formação técnica de uma turma e conecte o currículo às competências que sua organização precisa desenvolver.</p>
+            </li>
+            <li class="info-card">
+              <p class="info-card__big">02</p>
+              <h3>Formação customizada</h3>
+              <p>Desenhe uma jornada de capacitação com sua empresa: repertório, linguagem e desafios de negócio no mesmo programa.</p>
+            </li>
+            <li class="info-card">
+              <p class="info-card__big">03</p>
+              <h3>Conexão com talentos</h3>
+              <p>Teste novas formas de encontrar, conhecer e contratar profissionais em POCs de uma tecnologia de RH mais justa.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section class="method method--cards method--soft" aria-labelledby="afk-metodo">
+        <div class="method__inner">
+          <header class="section-head">
+            <p class="eyebrow">Método de trabalho</p>
+            <h2 id="afk-metodo">Da intenção à capacidade instalada.</h2>
+          </header>
+          <ol class="method__grid">
+            <li class="info-card">
+              <p class="info-card__big">01</p>
+              <h3>Mapear a demanda</h3>
+              <p>Identificamos as funções, competências e desafios que estão travando a próxima etapa da sua transformação.</p>
+            </li>
+            <li class="info-card">
+              <p class="info-card__big">02</p>
+              <h3>Formar com exigência</h3>
+              <p>Construímos uma jornada técnica rigorosa, com suporte para permanência e conexão com problemas reais.</p>
+            </li>
+            <li class="info-card">
+              <p class="info-card__big">03</p>
+              <h3>Conectar ao trabalho</h3>
+              <p>A formação termina quando o talento consegue ocupar o espaço onde sua capacidade pode gerar valor.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section class="work" aria-labelledby="afk-empresas">
+        <div class="work__inner">
+          <div class="work__text">
+            <p class="eyebrow">01 / Para empresas</p>
+            <h2 id="afk-empresas">Patrocinar formação não é preencher uma cota. É ampliar o campo de onde sua empresa consegue inovar.</h2>
+            <p>O programa pode ser desenhado para uma competência específica, uma região ou uma cadeia de valor inteira.</p>
+          </div>
+        </div>
+      </section>
       <!-- CO-INVESTIMENTO -->
       <section class="coinvest" aria-labelledby="coinvest-title">
         <div class="coinvest__inner">
@@ -99,8 +127,23 @@
           </div>
         </div>
       </section>
-
-
+      <section class="governance" aria-labelledby="afk-lastro">
+        <div class="governance__inner">
+          <div class="governance__copy">
+            <p class="eyebrow">Lastro e governança</p>
+            <h2 id="afk-lastro">Capacidade técnica com contexto, acompanhamento e destino.</h2>
+            <p>O trabalho da Afreektech combina formação e conexão. A pergunta não é apenas quantas pessoas concluíram, mas o que elas conseguem fazer depois e onde essa capacidade passa a gerar valor.</p>
+          </div>
+          <div class="governance__side">
+            <ul class="governance__list">
+              <li>Competências técnicas desenvolvidas</li>
+              <li>Conclusão e permanência nas turmas</li>
+              <li>Conexão com empresas e projetos</li>
+              <li>Evolução profissional e impacto econômico</li>
+            </ul>
+          </div>
+        </div>
+      </section>
       <!-- REPOSITÓRIO DE ESTUDOS: linhas empilhadas (mesma linguagem dos serviços da BM Solutions) -->
       <section class="repo repo--rows" id="estudos" aria-labelledby="repo-title">
         <div class="repo__inner">
@@ -150,15 +193,13 @@
               <h3>Uma tese para quem precisa decidir onde colocar capital.</h3>
             </div>
             <div class="repo__closing-side">
-              <p>Leitura executiva do estudo “Sem o Negro, o Brasil não Cresce”, para empresas, governos, financiadores e parceiros de implementação: resumo executivo, evidências classificadas e recomendações de política.</p>
-              <button class="btn btn--primary" type="button" data-open-form data-intent="Acessar conteúdo">Solicitar a leitura executiva <span aria-hidden="true">→</span></button>
+              <p>O estudo “Sem o Negro, o Brasil não Cresce” explica o método, as evidências e o que decidir com elas. O resumo executivo fica na página de metodologia.</p>
+              <a class="btn btn--primary" href="/metodologia.html#material">Ver a metodologia e o resumo executivo <span aria-hidden="true">→</span></a>
             </div>
           </div>
         </div>
       </section>
-
-
-      <!--@include next-step-->
+      <!--@include next-step title="Sua próxima turma pode começar pelo desafio certo." text="Conte qual capacidade técnica sua organização precisa construir ou encontrar."-->
     </main>
 
     <!--@include contact-dialog-->

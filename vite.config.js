@@ -39,6 +39,8 @@ export default defineConfig({
         movimento: resolve(root, 'movimento.html'),
         metodologia: resolve(root, 'metodologia.html'),
         'case-petrobras': resolve(root, 'case-petrobras.html'),
+        'termos-de-uso': resolve(root, 'termos-de-uso.html'),
+        'politica-de-privacidade': resolve(root, 'politica-de-privacidade.html'),
       },
     },
   },

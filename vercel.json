@@ -7,6 +7,16 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/movimento",
+      "destination": "/movimentoblackmoney",
+      "permanent": true
+    },
+    {
+      "source": "/movimento.html",
+      "destination": "/movimentoblackmoney",
+      "permanent": true
+    },
+    {
       "source": "/cases/petrobras",
       "destination": "/case-petrobras",
       "permanent": true
